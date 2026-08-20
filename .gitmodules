@@ -1,0 +1,8 @@
+[submodule "godot-cpp"]
+	path = godot-cpp
+	url = https://github.com/godotengine/godot-cpp
+	branch = master
+[submodule "glslang"]
+	path = glslang
+	url = https://github.com/KhronosGroup/glslang
+	branch = main
