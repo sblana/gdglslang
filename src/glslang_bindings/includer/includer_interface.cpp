@@ -1,5 +1,5 @@
 #include "includer_interface.hpp"
-#include "glslang_includer_impl.hpp"
+#include "includer_impl.hpp"
 #include <godot_cpp/core/memory.hpp>
 
 namespace gdglslang {

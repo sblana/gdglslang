@@ -4,7 +4,6 @@ namespace gdglslang {
 
 	namespace detail {
 
-// class gIncluderImpl : public glslang::TShader::Includer {
 		bool gIncluderImpl::has_owner() const {
 			if (owner->get_ref().get_type() == godot::Variant::Type::NIL) {
 				return false;
