@@ -17,7 +17,7 @@ namespace gdglslang {
 
 		#pragma region Exposed to godot
 		public:
-			gTLimits limits;
+			godot::Ref<gTLimits> limits;
 
 			gTBuiltInResource();
 			~gTBuiltInResource();

@@ -9,15 +9,11 @@ namespace gdglslang {
 	using gdglslangTIntermediate = gTIntermediate;
 	class gTIntermediate : public godot::RefCounted {
 		GDCLASS(gdglslangTIntermediate, godot::RefCounted)
-		private:
-			glslang::TIntermediate *data;
-
 		protected:
 			static void _bind_methods() {}
 
 		public:
-			glslang::TIntermediate *get_data() const { return data; }
-			void set_data(glslang::TIntermediate *p_ptr) { data = p_ptr; }
+			glslang::TIntermediate *data;
 
 		#pragma region Exposed to godot
 		public:

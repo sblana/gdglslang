@@ -2,6 +2,7 @@
 
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include <cstdint>
 #include "t_built_in_resource.hpp"
 #include "t_intermediate.hpp"
@@ -126,7 +127,7 @@ namespace gdglslang {
 			static godot::String get_spirv_version();
 			static int get_spirv_generator_version();
 			static godot::PackedByteArray glslang_to_spv(godot::Ref<gTIntermediate> p_intermediate, godot::Ref<gSpvBuildLogger> p_logger, godot::Ref<gSpvOptions> p_options);
-			static godot::PackedByteArray glslang_to_spv_1(godot::Ref<gTIntermediate> p_intermediate, godot::Ref<gSpvOptions> p_options);
+			static godot::PackedByteArray glslang_to_spv1(godot::Ref<gTIntermediate> p_intermediate, godot::Ref<gSpvOptions> p_options);
 
 
 		#pragma endregion
