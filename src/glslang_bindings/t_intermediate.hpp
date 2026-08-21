@@ -19,7 +19,6 @@ namespace gdglslang {
 		public:
 			gTIntermediate() {};
 			~gTIntermediate() {};
-
 		#pragma endregion
 	};
 }

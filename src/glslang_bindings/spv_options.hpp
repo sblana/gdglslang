@@ -18,7 +18,6 @@ namespace gdglslang {
 		public:
 			gSpvOptions();
 			~gSpvOptions();
-
 		#pragma endregion
 	};
 }

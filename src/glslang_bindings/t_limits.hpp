@@ -18,7 +18,6 @@ namespace gdglslang {
 		public:
 			gTLimits();
 			~gTLimits();
-
 		#pragma endregion
 	};
 }

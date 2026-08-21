@@ -45,7 +45,7 @@ namespace gdglslang {
 		return ret;
 	}
 
-	godot::PackedByteArray gGlobalSpace::glslang_to_spv1(godot::Ref<gTIntermediate> p_intermediate, godot::Ref<gSpvOptions> p_options) {
+	godot::PackedByteArray gGlobalSpace::glslang_to_spv_1(godot::Ref<gTIntermediate> p_intermediate, godot::Ref<gSpvOptions> p_options) {
 		return glslang_to_spv(p_intermediate, godot::Ref<gSpvBuildLogger>(memnew(gSpvBuildLogger)), p_options);
 	}
 }

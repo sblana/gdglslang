@@ -28,7 +28,6 @@ namespace gdglslang {
 			godot::String get_info_debug_log();
 
 			godot::Ref<gTIntermediate> get_intermediate(gGlobalSpace::EShLanguage p_stage) const;
-
 		#pragma endregion
 	};
 }

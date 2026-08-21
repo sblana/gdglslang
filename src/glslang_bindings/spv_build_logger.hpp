@@ -20,7 +20,6 @@ namespace gdglslang {
 			~gSpvBuildLogger();
 
 			godot::String get_all_messages() const;
-
 		#pragma endregion
 	};
 }

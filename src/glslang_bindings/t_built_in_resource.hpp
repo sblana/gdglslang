@@ -21,7 +21,6 @@ namespace gdglslang {
 
 			gTBuiltInResource();
 			~gTBuiltInResource();
-
 		#pragma endregion
 	};
 }
