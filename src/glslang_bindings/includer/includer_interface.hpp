@@ -2,7 +2,6 @@
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/callable.hpp>
-#include <unordered_map>
 #include "include_result.hpp"
 
 namespace gdglslang {
@@ -16,7 +15,7 @@ namespace gdglslang {
 	class gIncluderInterface : public godot::RefCounted {
 		GDCLASS(gdglslangIncluderInterface, godot::RefCounted)
 		private:
-			std::unordered_map<glslang::TShader::Includer::IncludeResult *, godot::ObjectID> glslang_include_result_to_owner_map;
+			godot::HashSet<godot::Ref<gIncludeResult>> include_results;
 
 		protected:
 			static void _bind_methods();
@@ -25,10 +24,8 @@ namespace gdglslang {
 			// public so that gTShader can get this
 			detail::gIncluderImpl *impl;
 
-			gIncludeResult *create_g_include_result();
-			// p_id and p_ptr should be the same object
-			void cleanup_g_include_result(godot::ObjectID p_id, gIncludeResult *p_ptr);
-			gIncludeResult *get_owner(glslang::TShader::Includer::IncludeResult *p_ptr) const;
+			void add_include_result(godot::Ref<gIncludeResult> p_result);
+			void remove_include_result(godot::Ref<gIncludeResult> p_result);
 
 			// called by impl. call callbacks here and create resources
 			glslang::TShader::Includer::IncludeResult *on_include_system(char const *p_header_name, char const *p_includer_name, std::size_t p_inclusion_depth);
@@ -45,9 +42,8 @@ namespace gdglslang {
 			godot::Callable callback_should_include_system;
 			godot::Callable callback_should_include_local;
 
-			// f(p_header_name: String, p_includer_name String, p_inclusion_depth int, p_result: gdglslangIncludeResult, p_user_data: RefCounted) -> void
+			// f(p_header_name: String, p_includer_name String, p_inclusion_depth int, p_user_data: RefCounted) -> gdglslangIncludeResult
 			// only called if should_include_XXX returns true.
-			// note that user doesn't create gdglslangIncludeResult: user has the ability to modify p_result.
 			godot::Callable callback_include_system;
 			godot::Callable callback_include_local;
 
@@ -57,7 +53,6 @@ namespace gdglslang {
 
 			gIncluderInterface();
 			~gIncluderInterface();
-
 		#pragma endregion
 	};
 }
