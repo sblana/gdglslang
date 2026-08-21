@@ -10,10 +10,13 @@ namespace gdglslang {
 	class gTProgram : public godot::RefCounted {
 		GDCLASS(gdglslangTProgram, godot::RefCounted)
 		private:
-			glslang::TProgram *data;
+			godot::Vector<godot::Ref<gTShader>> shaders;
 
 		protected:
 			static void _bind_methods();
+
+		public:
+			glslang::TProgram *data = nullptr;
 
 		#pragma region Exposed to godot
 		public:
@@ -22,12 +25,12 @@ namespace gdglslang {
 
 			void add_shader(godot::Ref<gTShader> p_shader);
 
-			bool link(gGlobalSpace::EShMessages p_messages);
+			bool link(gGlobalSpace::gEShMessages p_messages);
 
 			godot::String get_info_log();
 			godot::String get_info_debug_log();
 
-			godot::Ref<gTIntermediate> get_intermediate(gGlobalSpace::EShLanguage p_stage) const;
+			godot::Ref<gTIntermediate> get_intermediate(gGlobalSpace::gEShLanguage p_stage) const;
 		#pragma endregion
 	};
 }

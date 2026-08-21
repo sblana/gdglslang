@@ -3,6 +3,7 @@
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/ref.hpp>
+#include <glslang/glslang/Public/ShaderLang.h>
 #include <cstdint>
 #include "t_built_in_resource.hpp"
 #include "t_intermediate.hpp"
@@ -15,12 +16,9 @@ namespace gdglslang {
 	using gdglslangGlobalSpace = gGlobalSpace;
 	class gGlobalSpace : public godot::Object {
 		GDCLASS(gdglslangGlobalSpace, godot::Object)
-		protected:
-			static void _bind_methods();
-
 		#pragma region Exposed to godot
 		public:
-			enum EShLanguage : std::uint32_t {
+			enum gEShLanguage : std::uint32_t {
 				EShLangVertex,
 				EShLangTessControl,
 				EShLangTessEvaluation,
@@ -45,26 +43,26 @@ namespace gdglslang {
 				EShLangMeshNV = EShLangMesh,
 			};
 
-			// enum EShLanguageMask : std::uint32_t {};
+			// enum gEShLanguageMask : std::uint32_t {};
 
-			enum EShSource : std::uint32_t {
+			enum gEShSource : std::uint32_t {
 				EShSourceNone,
 				EShSourceGlsl,
 				EShSourceHlsl,
 			};
 
-			enum EShClient : std::uint32_t {
+			enum gEShClient : std::uint32_t {
 				EShClientNone,
 				EShClientVulkan,
 				EShClientOpenGL,
 			};
 
-			enum EShTargetLanguage : std::uint32_t {
+			enum gEShTargetLanguage : std::uint32_t {
 				EShTargetNone,
 				EShTargetSpv,
 			};
 
-			enum EShTargetClientVersion : std::uint32_t {
+			enum gEShTargetClientVersion : std::uint32_t {
 				EShTargetVulkan_1_0 = (1 << 22),
 				EShTargetVulkan_1_1 = (1 << 22) | (1 << 12),
 				EShTargetVulkan_1_2 = (1 << 22) | (2 << 12),
@@ -73,7 +71,7 @@ namespace gdglslang {
 				EShTargetOpenGL_450 = 450,
 			};
 
-			enum EShTargetLanguageVersion : std::uint32_t {
+			enum gEShTargetLanguageVersion : std::uint32_t {
 				EShTargetSpv_1_0 = (1 << 16),
 				EShTargetSpv_1_1 = (1 << 16) | (1 << 8),
 				EShTargetSpv_1_2 = (1 << 16) | (2 << 8),
@@ -83,7 +81,7 @@ namespace gdglslang {
 				EShTargetSpv_1_6 = (1 << 16) | (6 << 8),
 			};
 
-			enum EProfile : std::uint32_t {
+			enum gEProfile : std::uint32_t {
 				EBadProfile           = 0,
 				ENoProfile            = (1 << 0),
 				ECoreProfile          = (1 << 1),
@@ -91,7 +89,7 @@ namespace gdglslang {
 				EEsProfile            = (1 << 3),
 			};
 
-			enum EShMessages : std::uint32_t {
+			enum gEShMessages : std::uint32_t {
 				EShMsgDefault               = 0,
 				EShMsgRelaxedErrors         = (1 << 0),
 				EShMsgSuppressWarnings      = (1 << 1),
@@ -115,7 +113,32 @@ namespace gdglslang {
 				EShMsgValidateCrossStageIO  = (1 << 19),
 				EShMsgRelaxSetBindingLimits = (1 << 20),
 			};
+		#pragma endregion
 
+		protected:
+			static void _bind_methods();
+
+		public:
+			static EShLanguage                       convert_to_glslang_enum(gEShLanguage              p_value);
+			static glslang::EShSource                convert_to_glslang_enum(gEShSource                p_value);
+			static glslang::EShClient                convert_to_glslang_enum(gEShClient                p_value);
+			static glslang::EShTargetLanguage        convert_to_glslang_enum(gEShTargetLanguage        p_value);
+			static glslang::EShTargetClientVersion   convert_to_glslang_enum(gEShTargetClientVersion   p_value);
+			static glslang::EShTargetLanguageVersion convert_to_glslang_enum(gEShTargetLanguageVersion p_value);
+			static EProfile                          convert_to_glslang_enum(gEProfile                 p_value);
+			static EShMessages                       convert_to_glslang_enum(gEShMessages              p_value);
+
+			static gEShLanguage              convert_to_gdglslang_enum(EShLanguage                       p_value);
+			static gEShSource                convert_to_gdglslang_enum(glslang::EShSource                p_value);
+			static gEShClient                convert_to_gdglslang_enum(glslang::EShClient                p_value);
+			static gEShTargetLanguage        convert_to_gdglslang_enum(glslang::EShTargetLanguage        p_value);
+			static gEShTargetClientVersion   convert_to_gdglslang_enum(glslang::EShTargetClientVersion   p_value);
+			static gEShTargetLanguageVersion convert_to_gdglslang_enum(glslang::EShTargetLanguageVersion p_value);
+			static gEProfile                 convert_to_gdglslang_enum(EProfile                          p_value);
+			static gEShMessages              convert_to_gdglslang_enum(EShMessages                       p_value);
+
+		#pragma region Exposed to godot
+		public:
 			// ShaderLang.h functions
 			static bool initialize_process();
 			static void finalize_process();
@@ -132,4 +155,4 @@ namespace gdglslang {
 	};
 }
 
-VARIANT_ENUM_CAST(gdglslang::gGlobalSpace::EShLanguage);
+VARIANT_ENUM_CAST(gdglslang::gGlobalSpace::gEShLanguage);

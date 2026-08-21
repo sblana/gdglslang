@@ -19,8 +19,8 @@ namespace gdglslang {
 		public:
 			godot::Ref<gTLimits> limits;
 
-			gTBuiltInResource();
-			~gTBuiltInResource();
+			gTBuiltInResource() { limits = memnew(gTLimits); }
+			~gTBuiltInResource() {}
 		#pragma endregion
 	};
 }

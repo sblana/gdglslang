@@ -12,7 +12,7 @@ namespace gdglslang {
 			static void _bind_methods();
 
 		public:
-			spv::SpvBuildLogger *data;
+			spv::SpvBuildLogger *data = nullptr;
 
 		#pragma region Exposed to godot
 		public:

@@ -13,7 +13,7 @@ namespace gdglslang {
 			static void _bind_methods() {}
 
 		public:
-			glslang::TIntermediate *data;
+			glslang::TIntermediate *data = nullptr;
 
 		#pragma region Exposed to godot
 		public:

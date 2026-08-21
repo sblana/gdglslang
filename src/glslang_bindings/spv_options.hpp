@@ -16,8 +16,8 @@ namespace gdglslang {
 
 		#pragma region Exposed to godot
 		public:
-			gSpvOptions();
-			~gSpvOptions();
+			gSpvOptions() {}
+			~gSpvOptions() {}
 		#pragma endregion
 	};
 }

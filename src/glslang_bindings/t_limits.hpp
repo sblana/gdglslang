@@ -16,8 +16,8 @@ namespace gdglslang {
 
 		#pragma region Exposed to godot
 		public:
-			gTLimits();
-			~gTLimits();
+			gTLimits() {}
+			~gTLimits() {}
 		#pragma endregion
 	};
 }
