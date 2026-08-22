@@ -9,7 +9,7 @@ namespace gdglslang {
 	class gTLimits : public godot::RefCounted {
 		GDCLASS(gdglslangTLimits, godot::RefCounted)
 		protected:
-			static void _bind_methods();
+			static void _bind_methods() {}
 
 		public:
 			TLimits data;

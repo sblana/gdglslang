@@ -10,9 +10,9 @@ namespace gdglslang {
 	class gIncludeResult : public godot::RefCounted {
 		GDCLASS(gdglslangIncludeResult, godot::RefCounted)
 		private:
-			godot::Ref<godot::RefCounted> user_data;
 			godot::CharString header_name_string;
 			godot::CharString header_data_string;
+			godot::Ref<godot::RefCounted> user_data;
 
 		protected:
 			static void _bind_methods();

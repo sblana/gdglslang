@@ -4,9 +4,46 @@
 #include <glslang/SPIRV/GlslangToSpv.h>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/core/memory.hpp>
-#include "spv_options.hpp"
 
 namespace gdglslang {
+
+	EShLanguage gGlobalSpace::convert_to_glslang_enum(gGlobalSpace::gEShLanguage p_value) {
+		return EShLanguage(p_value);
+	}
+
+	glslang::EShSource gGlobalSpace::convert_to_glslang_enum(gGlobalSpace::gEShSource p_value) {
+		return glslang::EShSource(p_value);
+	}
+
+	glslang::EShClient gGlobalSpace::convert_to_glslang_enum(gGlobalSpace::gEShClient p_value) {
+		return glslang::EShClient(p_value);
+	}
+
+	glslang::EShTargetLanguage gGlobalSpace::convert_to_glslang_enum(gGlobalSpace::gEShTargetLanguage p_value) {
+		return glslang::EShTargetLanguage(p_value);
+	}
+
+	glslang::EShTargetClientVersion gGlobalSpace::convert_to_glslang_enum(gGlobalSpace::gEShTargetClientVersion p_value) {
+		return glslang::EShTargetClientVersion(p_value);
+	}
+
+	glslang::EShTargetLanguageVersion gGlobalSpace::convert_to_glslang_enum(gGlobalSpace::gEShTargetLanguageVersion p_value) {
+		return glslang::EShTargetLanguageVersion(p_value);
+	}
+
+	EProfile gGlobalSpace::convert_to_glslang_enum(gGlobalSpace::gEProfile p_value) {
+		return EProfile(p_value);
+	}
+
+	EShMessages gGlobalSpace::convert_to_glslang_enum(gGlobalSpace::gEShMessages p_value) {
+		return EShMessages(p_value);
+	}
+
+
+	gGlobalSpace::gEShLanguage gGlobalSpace::convert_to_gdglslang_enum(EShLanguage p_value) {
+		return gGlobalSpace::gEShLanguage(p_value);
+	}
+
 
 	bool gGlobalSpace::initialize_process() {
 		return glslang::InitializeProcess();

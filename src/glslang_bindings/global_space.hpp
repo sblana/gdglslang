@@ -1,4 +1,4 @@
-#pragma oncee
+#pragma once
 
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/classes/object.hpp>
@@ -129,13 +129,13 @@ namespace gdglslang {
 			static EShMessages                       convert_to_glslang_enum(gEShMessages              p_value);
 
 			static gEShLanguage              convert_to_gdglslang_enum(EShLanguage                       p_value);
-			static gEShSource                convert_to_gdglslang_enum(glslang::EShSource                p_value);
-			static gEShClient                convert_to_gdglslang_enum(glslang::EShClient                p_value);
-			static gEShTargetLanguage        convert_to_gdglslang_enum(glslang::EShTargetLanguage        p_value);
-			static gEShTargetClientVersion   convert_to_gdglslang_enum(glslang::EShTargetClientVersion   p_value);
-			static gEShTargetLanguageVersion convert_to_gdglslang_enum(glslang::EShTargetLanguageVersion p_value);
-			static gEProfile                 convert_to_gdglslang_enum(EProfile                          p_value);
-			static gEShMessages              convert_to_gdglslang_enum(EShMessages                       p_value);
+			// static gEShSource                convert_to_gdglslang_enum(glslang::EShSource                p_value);
+			// static gEShClient                convert_to_gdglslang_enum(glslang::EShClient                p_value);
+			// static gEShTargetLanguage        convert_to_gdglslang_enum(glslang::EShTargetLanguage        p_value);
+			// static gEShTargetClientVersion   convert_to_gdglslang_enum(glslang::EShTargetClientVersion   p_value);
+			// static gEShTargetLanguageVersion convert_to_gdglslang_enum(glslang::EShTargetLanguageVersion p_value);
+			// static gEProfile                 convert_to_gdglslang_enum(EProfile                          p_value);
+			// static gEShMessages              convert_to_gdglslang_enum(EShMessages                       p_value);
 
 		#pragma region Exposed to godot
 		public:

@@ -17,7 +17,7 @@ namespace gdglslang {
 	}
 
 	bool gTProgram::link(gGlobalSpace::gEShMessages p_messages) {
-		data->link(gGlobalSpace::convert_to_glslang_enum(p_messages));
+		return data->link(gGlobalSpace::convert_to_glslang_enum(p_messages));
 	}
 
 	godot::String gTProgram::get_info_log() {

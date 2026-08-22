@@ -1,0 +1,11 @@
+__pycache__/
+.vscode/
+
+project/.godot/
+glslang_building/
+
+*.so
+*.os
+*.dblite
+
+src/gen/

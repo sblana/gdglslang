@@ -92,24 +92,24 @@ namespace gdglslang {
 
 	bool gTShader::parse(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, gGlobalSpace::gEProfile p_default_profile, bool p_force_default_version_and_profile, bool p_forward_compatible, gGlobalSpace::gEShMessages p_messages, godot::Ref<gIncluderInterface> p_includer) {
 		ERR_FAIL_COND_V_MSG(!is_setup(), false, "gdglslangTShader::setup(...) must be called before this function.");
-		data->parse(&p_built_in_resource->data, p_default_version, gGlobalSpace::convert_to_glslang_enum(p_default_profile), p_force_default_version_and_profile, p_forward_compatible, gGlobalSpace::convert_to_glslang_enum(p_messages), *p_includer->impl);
+		return data->parse(&p_built_in_resource->data, p_default_version, gGlobalSpace::convert_to_glslang_enum(p_default_profile), p_force_default_version_and_profile, p_forward_compatible, gGlobalSpace::convert_to_glslang_enum(p_messages), *p_includer->impl);
 	}
 
 	// forbid includer
 	bool gTShader::parse_1(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, gGlobalSpace::gEProfile p_default_profile, bool p_force_default_version_and_profile, bool p_forward_compatible, gGlobalSpace::gEShMessages p_messages) {
 		ERR_FAIL_COND_V_MSG(!is_setup(), false, "gdglslangTShader::setup(...) must be called before this function.");
-		data->parse(&p_built_in_resource->data, p_default_version, gGlobalSpace::convert_to_glslang_enum(p_default_profile), p_force_default_version_and_profile, p_forward_compatible, gGlobalSpace::convert_to_glslang_enum(p_messages));
+		return data->parse(&p_built_in_resource->data, p_default_version, gGlobalSpace::convert_to_glslang_enum(p_default_profile), p_force_default_version_and_profile, p_forward_compatible, gGlobalSpace::convert_to_glslang_enum(p_messages));
 	}
 
 	// forbid includer
 	bool gTShader::parse_2(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, bool p_forward_compatible, gGlobalSpace::gEShMessages p_messages) {
 		ERR_FAIL_COND_V_MSG(!is_setup(), false, "gdglslangTShader::setup(...) must be called before this function.");
-		data->parse(&p_built_in_resource->data, p_default_version, p_forward_compatible, gGlobalSpace::convert_to_glslang_enum(p_messages));
+		return data->parse(&p_built_in_resource->data, p_default_version, p_forward_compatible, gGlobalSpace::convert_to_glslang_enum(p_messages));
 	}
 
 	bool gTShader::parse_3(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, bool p_forward_compatible, gGlobalSpace::gEShMessages p_messages, godot::Ref<gIncluderInterface> p_includer) {
 		ERR_FAIL_COND_V_MSG(!is_setup(), false, "gdglslangTShader::setup(...) must be called before this function.");
-		data->parse(&p_built_in_resource->data, p_default_version, p_forward_compatible, gGlobalSpace::convert_to_glslang_enum(p_messages), *p_includer->impl);
+		return data->parse(&p_built_in_resource->data, p_default_version, p_forward_compatible, gGlobalSpace::convert_to_glslang_enum(p_messages), *p_includer->impl);
 	}
 
 	godot::String gTShader::get_info_log() {
