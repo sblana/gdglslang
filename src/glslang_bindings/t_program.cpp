@@ -2,6 +2,14 @@
 
 namespace gdglslang {
 
+	void gTProgram::_bind_methods() {
+		godot::ClassDB::bind_method(godot::D_METHOD("add_shader", "p_shader"), &gTProgram::add_shader);
+		godot::ClassDB::bind_method(godot::D_METHOD("link", "p_messages"), &gTProgram::link);
+		godot::ClassDB::bind_method(godot::D_METHOD("get_info_log"), &gTProgram::get_info_log);
+		godot::ClassDB::bind_method(godot::D_METHOD("get_info_debug_log"), &gTProgram::get_info_debug_log);
+		godot::ClassDB::bind_method(godot::D_METHOD("get_intermediate", "p_stage"), &gTProgram::get_intermediate);
+	}
+
 	gTProgram::gTProgram() {
 		data = new glslang::TProgram;
 	}
@@ -16,8 +24,8 @@ namespace gdglslang {
 		data->addShader(p_shader->data);
 	}
 
-	bool gTProgram::link(gGlobalSpace::gEShMessages p_messages) {
-		return data->link(gGlobalSpace::convert_to_glslang_enum(p_messages));
+	bool gTProgram::link(godot::BitField<gGlobalSpace::gEShMessages> p_messages) {
+		return data->link(gGlobalSpace::convert_to_glslang_enum(gGlobalSpace::gEShMessages(int64_t(p_messages))));
 	}
 
 	godot::String gTProgram::get_info_log() {

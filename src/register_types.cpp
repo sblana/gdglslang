@@ -6,14 +6,24 @@
 
 #include "glslang_bindings/t_limits.hpp"
 #include "glslang_bindings/t_built_in_resource.hpp"
+#include "glslang_bindings/t_intermediate.hpp"
+#include "glslang_bindings/spv_build_logger.hpp"
 #include "glslang_bindings/spv_options.hpp"
+#include "glslang_bindings/global_space.hpp"
+#include "glslang_bindings/t_shader.hpp"
+#include "glslang_bindings/t_program.hpp"
 
 
 void initialize_gdglslang(godot::ModuleInitializationLevel p_level) {
 	if (p_level == godot::ModuleInitializationLevel::MODULE_INITIALIZATION_LEVEL_SCENE) {
 		GDREGISTER_CLASS(gdglslang::gTLimits);
 		GDREGISTER_CLASS(gdglslang::gTBuiltInResource);
+		GDREGISTER_CLASS(gdglslang::gTIntermediate);
+		GDREGISTER_CLASS(gdglslang::gSpvBuildLogger);
 		GDREGISTER_CLASS(gdglslang::gSpvOptions);
+		GDREGISTER_CLASS(gdglslang::gGlobalSpace);
+		GDREGISTER_CLASS(gdglslang::gTShader);
+		GDREGISTER_CLASS(gdglslang::gTProgram);
 	}
 }
 

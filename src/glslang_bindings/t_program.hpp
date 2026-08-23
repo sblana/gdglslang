@@ -25,7 +25,7 @@ namespace gdglslang {
 
 			void add_shader(godot::Ref<gTShader> p_shader);
 
-			bool link(gGlobalSpace::gEShMessages p_messages);
+			bool link(godot::BitField<gGlobalSpace::gEShMessages> p_messages);
 
 			godot::String get_info_log();
 			godot::String get_info_debug_log();

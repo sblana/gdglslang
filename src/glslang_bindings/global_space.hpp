@@ -155,4 +155,11 @@ namespace gdglslang {
 	};
 }
 
-VARIANT_ENUM_CAST(gdglslang::gGlobalSpace::gEShLanguage);
+VARIANT_ENUM_CAST(gdglslang::gdglslangGlobalSpace::gEShLanguage);
+VARIANT_ENUM_CAST(gdglslang::gdglslangGlobalSpace::gEShSource);
+VARIANT_ENUM_CAST(gdglslang::gdglslangGlobalSpace::gEShClient);
+VARIANT_ENUM_CAST(gdglslang::gdglslangGlobalSpace::gEShTargetLanguage);
+VARIANT_ENUM_CAST(gdglslang::gdglslangGlobalSpace::gEShTargetClientVersion);
+VARIANT_ENUM_CAST(gdglslang::gdglslangGlobalSpace::gEShTargetLanguageVersion);
+VARIANT_ENUM_CAST(gdglslang::gdglslangGlobalSpace::gEProfile);
+VARIANT_BITFIELD_CAST(gdglslang::gdglslangGlobalSpace::gEShMessages);

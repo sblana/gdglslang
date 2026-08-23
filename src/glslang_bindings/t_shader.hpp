@@ -1,7 +1,7 @@
 #pragma once
 #include <godot_cpp/classes/ref_counted.hpp>
 #include "global_space.hpp"
-#include "includer/includer_interface.hpp"
+// #include "includer/includer_interface.hpp"
 #include "t_intermediate.hpp"
 
 namespace gdglslang {
@@ -34,8 +34,10 @@ namespace gdglslang {
 			// Dummy constructor. Need to call setup(...) or create_new(...)
 			gTShader();
 			~gTShader();
-			void setup(gGlobalSpace::gEShLanguage p_language);
+
 			static godot::Ref<gTShader> create_new(gGlobalSpace::gEShLanguage p_language);
+
+			void setup(gGlobalSpace::gEShLanguage p_language);
 			bool is_setup() const;
 
 			void set_strings(godot::PackedStringArray p_strings);
@@ -48,18 +50,16 @@ namespace gdglslang {
 			void set_env_client(gGlobalSpace::gEShClient p_client, gGlobalSpace::gEShTargetClientVersion p_version);
 			void set_env_target(gGlobalSpace::gEShTargetLanguage p_lang, gGlobalSpace::gEShTargetLanguageVersion p_version);
 
-			bool parse(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, gGlobalSpace::gEProfile p_default_profile, bool p_force_default_version_and_profile, bool p_forward_compatible, gGlobalSpace::gEShMessages p_messages, godot::Ref<gIncluderInterface> p_includer);
+			// bool parse(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, gGlobalSpace::gEProfile p_default_profile, bool p_force_default_version_and_profile, bool p_forward_compatible, godot::BitField<gGlobalSpace::gEShMessages> p_messages, godot::Ref<gIncluderInterface> p_includer);
 			// forbid includer
-			bool parse_1(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, gGlobalSpace::gEProfile p_default_profile, bool p_force_default_version_and_profile, bool p_forward_compatible, gGlobalSpace::gEShMessages p_messages);
+			bool parse_1(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, gGlobalSpace::gEProfile p_default_profile, bool p_force_default_version_and_profile, bool p_forward_compatible, godot::BitField<gGlobalSpace::gEShMessages> p_messages);
 			// forbid includer
-			bool parse_2(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, bool p_forward_compatible, gGlobalSpace::gEShMessages p_messages);
-			bool parse_3(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, bool p_forward_compatible, gGlobalSpace::gEShMessages p_messages, godot::Ref<gIncluderInterface> p_includer);
+			bool parse_2(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, bool p_forward_compatible, godot::BitField<gGlobalSpace::gEShMessages> p_messages);
+			// bool parse_3(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, bool p_forward_compatible, godot::BitField<gGlobalSpace::gEShMessages> p_messages, godot::Ref<gIncluderInterface> p_includer);
 
 			godot::String get_info_log();
 			godot::String get_info_debug_log();
-
 			gGlobalSpace::gEShLanguage get_stage() const;
-
 			godot::Ref<gTIntermediate> get_intermediate() const;
 		#pragma endregion
 	};

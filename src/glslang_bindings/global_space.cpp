@@ -7,6 +7,98 @@
 
 namespace gdglslang {
 
+	void gGlobalSpace::_bind_methods() {
+		#pragma region Enums
+			BIND_ENUM_CONSTANT(EShLangVertex)
+			BIND_ENUM_CONSTANT(EShLangTessControl)
+			BIND_ENUM_CONSTANT(EShLangTessEvaluation)
+			BIND_ENUM_CONSTANT(EShLangGeometry)
+			BIND_ENUM_CONSTANT(EShLangFragment)
+			BIND_ENUM_CONSTANT(EShLangCompute)
+			BIND_ENUM_CONSTANT(EShLangRayGen)
+			BIND_ENUM_CONSTANT(EShLangRayGenNV)
+			BIND_ENUM_CONSTANT(EShLangIntersect)
+			BIND_ENUM_CONSTANT(EShLangIntersectNV)
+			BIND_ENUM_CONSTANT(EShLangAnyHit)
+			BIND_ENUM_CONSTANT(EShLangAnyHitNV)
+			BIND_ENUM_CONSTANT(EShLangClosestHit)
+			BIND_ENUM_CONSTANT(EShLangClosestHitNV)
+			BIND_ENUM_CONSTANT(EShLangMiss)
+			BIND_ENUM_CONSTANT(EShLangMissNV)
+			BIND_ENUM_CONSTANT(EShLangCallable)
+			BIND_ENUM_CONSTANT(EShLangCallableNV)
+			BIND_ENUM_CONSTANT(EShLangTask)
+			BIND_ENUM_CONSTANT(EShLangTaskNV)
+			BIND_ENUM_CONSTANT(EShLangMesh)
+			BIND_ENUM_CONSTANT(EShLangMeshNV)
+
+			BIND_ENUM_CONSTANT(EShSourceNone)
+			BIND_ENUM_CONSTANT(EShSourceGlsl)
+			BIND_ENUM_CONSTANT(EShSourceHlsl)
+
+			BIND_ENUM_CONSTANT(EShClientNone)
+			BIND_ENUM_CONSTANT(EShClientVulkan)
+			BIND_ENUM_CONSTANT(EShClientOpenGL)
+
+			BIND_ENUM_CONSTANT(EShTargetNone)
+			BIND_ENUM_CONSTANT(EShTargetSpv)
+
+			BIND_ENUM_CONSTANT(EShTargetVulkan_1_0)
+			BIND_ENUM_CONSTANT(EShTargetVulkan_1_1)
+			BIND_ENUM_CONSTANT(EShTargetVulkan_1_2)
+			BIND_ENUM_CONSTANT(EShTargetVulkan_1_3)
+			BIND_ENUM_CONSTANT(EShTargetVulkan_1_4)
+			BIND_ENUM_CONSTANT(EShTargetOpenGL_450)
+
+			BIND_ENUM_CONSTANT(EShTargetSpv_1_0)
+			BIND_ENUM_CONSTANT(EShTargetSpv_1_1)
+			BIND_ENUM_CONSTANT(EShTargetSpv_1_2)
+			BIND_ENUM_CONSTANT(EShTargetSpv_1_3)
+			BIND_ENUM_CONSTANT(EShTargetSpv_1_4)
+			BIND_ENUM_CONSTANT(EShTargetSpv_1_5)
+			BIND_ENUM_CONSTANT(EShTargetSpv_1_6)
+
+			BIND_ENUM_CONSTANT(EBadProfile)
+			BIND_ENUM_CONSTANT(ENoProfile)
+			BIND_ENUM_CONSTANT(ECoreProfile)
+			BIND_ENUM_CONSTANT(ECompatibilityProfile)
+			BIND_ENUM_CONSTANT(EEsProfile)
+
+			BIND_BITFIELD_FLAG(EShMsgDefault)
+			BIND_BITFIELD_FLAG(EShMsgRelaxedErrors)
+			BIND_BITFIELD_FLAG(EShMsgSuppressWarnings)
+			BIND_BITFIELD_FLAG(EShMsgAST)
+			BIND_BITFIELD_FLAG(EShMsgSpvRules)
+			BIND_BITFIELD_FLAG(EShMsgVulkanRules)
+			BIND_BITFIELD_FLAG(EShMsgOnlyPreprocessor)
+			BIND_BITFIELD_FLAG(EShMsgReadHlsl)
+			BIND_BITFIELD_FLAG(EShMsgCascadingErrors)
+			BIND_BITFIELD_FLAG(EShMsgKeepUncalled)
+			BIND_BITFIELD_FLAG(EShMsgHlslOffsets)
+			BIND_BITFIELD_FLAG(EShMsgDebugInfo)
+			BIND_BITFIELD_FLAG(EShMsgHlslEnable16BitTypes)
+			BIND_BITFIELD_FLAG(EShMsgHlslLegalization)
+			BIND_BITFIELD_FLAG(EShMsgHlslDX9Compatible)
+			BIND_BITFIELD_FLAG(EShMsgBuiltinSymbolTable)
+			BIND_BITFIELD_FLAG(EShMsgEnhanced)
+			BIND_BITFIELD_FLAG(EShMsgAbsolutePath)
+			BIND_BITFIELD_FLAG(EShMsgDisplayErrorColumn)
+			BIND_BITFIELD_FLAG(EShMsgLinkTimeOptimization)
+			BIND_BITFIELD_FLAG(EShMsgValidateCrossStageIO)
+			BIND_BITFIELD_FLAG(EShMsgRelaxSetBindingLimits)
+		#pragma endregion
+
+		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("initialize_process"), &gGlobalSpace::initialize_process);
+		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("finalize_process"), &gGlobalSpace::finalize_process);
+
+		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("get_default_resources"), &gGlobalSpace::get_default_resources);
+
+		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("get_spirv_version"), &gGlobalSpace::get_spirv_version);
+		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("get_spirv_generator_version"), &gGlobalSpace::get_spirv_generator_version);
+		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("glslang_to_spv", "p_intermediate", "p_logger", "p_options"), &gGlobalSpace::glslang_to_spv);
+		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("glslang_to_spv_1", "p_intermediate", "p_options"), &gGlobalSpace::glslang_to_spv_1);
+	}
+
 	EShLanguage gGlobalSpace::convert_to_glslang_enum(gGlobalSpace::gEShLanguage p_value) {
 		return EShLanguage(p_value);
 	}
@@ -71,9 +163,12 @@ namespace gdglslang {
 	}
 
 	godot::PackedByteArray gGlobalSpace::glslang_to_spv(godot::Ref<gTIntermediate> p_intermediate, godot::Ref<gSpvBuildLogger> p_logger, godot::Ref<gSpvOptions> p_options) {
+		godot::PackedByteArray ret;
+		ERR_FAIL_COND_V(p_intermediate.is_null(), ret);
+		ERR_FAIL_NULL_V(p_intermediate->data, ret);
+
 		std::vector<unsigned int> spirv;
 		glslang::GlslangToSpv(*p_intermediate->data, spirv, p_logger->data, &p_options->data);
-		godot::PackedByteArray ret;
 
 		ret.resize(spirv.size() * sizeof(unsigned int));
 		uint8_t *w = ret.ptrw();

@@ -17,8 +17,8 @@ namespace gdglslang {
 
 		#pragma region Exposed to godot
 		public:
-			gTIntermediate() {};
-			~gTIntermediate() {};
+			gTIntermediate() {}
+			~gTIntermediate() {}
 		#pragma endregion
 	};
 }
