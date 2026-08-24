@@ -4,6 +4,33 @@
 
 namespace gdglslang {
 
+	void gIncluderInterface::_bind_methods() {
+		godot::ClassDB::bind_method(godot::D_METHOD("set_user_data", "p_user_data"), &gIncluderInterface::set_user_data);
+		godot::ClassDB::bind_method(godot::D_METHOD("get_user_data"), &gIncluderInterface::get_user_data);
+
+		godot::ClassDB::bind_method(godot::D_METHOD("set_callback_should_include_system", "p_callback"), &gIncluderInterface::set_callback_should_include_system);
+		godot::ClassDB::bind_method(godot::D_METHOD("get_callback_should_include_system"), &gIncluderInterface::get_callback_should_include_system);
+
+		godot::ClassDB::bind_method(godot::D_METHOD("set_callback_should_include_local", "p_callback"), &gIncluderInterface::set_callback_should_include_local);
+		godot::ClassDB::bind_method(godot::D_METHOD("get_callback_should_include_local"), &gIncluderInterface::get_callback_should_include_local);
+
+		godot::ClassDB::bind_method(godot::D_METHOD("set_callback_include_system", "p_callback"), &gIncluderInterface::set_callback_include_system);
+		godot::ClassDB::bind_method(godot::D_METHOD("get_callback_include_system"), &gIncluderInterface::get_callback_include_system);
+
+		godot::ClassDB::bind_method(godot::D_METHOD("set_callback_include_local", "p_callback"), &gIncluderInterface::set_callback_include_local);
+		godot::ClassDB::bind_method(godot::D_METHOD("get_callback_include_local"), &gIncluderInterface::get_callback_include_local);
+
+		godot::ClassDB::bind_method(godot::D_METHOD("set_callback_pre_release_include", "p_callback"), &gIncluderInterface::set_callback_pre_release_include);
+		godot::ClassDB::bind_method(godot::D_METHOD("get_callback_pre_release_include"), &gIncluderInterface::get_callback_pre_release_include);
+
+		ADD_PROPERTY(godot::PropertyInfo(godot::Variant::OBJECT, "user_data"), "set_user_data", "get_user_data");
+		ADD_PROPERTY(godot::PropertyInfo(godot::Variant::CALLABLE, "callback_should_include_system"), "set_callback_should_include_system", "get_callback_should_include_system");
+		ADD_PROPERTY(godot::PropertyInfo(godot::Variant::CALLABLE, "callback_should_include_local"), "set_callback_should_include_local", "get_callback_should_include_local");
+		ADD_PROPERTY(godot::PropertyInfo(godot::Variant::CALLABLE, "callback_include_system"), "set_callback_include_system", "get_callback_include_system");
+		ADD_PROPERTY(godot::PropertyInfo(godot::Variant::CALLABLE, "callback_include_local"), "set_callback_include_local", "get_callback_include_local");
+		ADD_PROPERTY(godot::PropertyInfo(godot::Variant::CALLABLE, "callback_pre_release_include"), "set_callback_pre_release_include", "get_callback_pre_release_include");
+	}
+
 	void gIncluderInterface::add_include_result(godot::Ref<gIncludeResult> p_result) {
 		include_results.insert(p_result);
 	}

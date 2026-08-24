@@ -27,6 +27,7 @@ namespace gdglslang {
 				data(header_name_string.ptr(), header_data_string.ptr(), header_data_string.length(), reinterpret_cast<void *>(get_instance_id()))
 			{}
 
+			// static bool has_owner(glslang::TShader::Includer::IncludeResult *p_ptr);
 			static godot::Ref<gIncludeResult> get_owner(glslang::TShader::Includer::IncludeResult *p_ptr);
 
 		#pragma region Exposed to godot

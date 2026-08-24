@@ -36,13 +36,13 @@ namespace gdglslang {
 		public:
 			godot::Ref<godot::RefCounted> user_data;
 
-			// f(p_header_name: String, p_includer_name String, p_inclusion_depth int, p_user_data: RefCounted) -> bool
+			// f(p_header_name: String, p_includer_name: String, p_inclusion_depth: int, p_user_data: RefCounted) -> bool
 			// returns bool whether this should be included
 			// if callback_should_include_xx is set, then the corresponding callback_include_xx should also be set
 			godot::Callable callback_should_include_system;
 			godot::Callable callback_should_include_local;
 
-			// f(p_header_name: String, p_includer_name String, p_inclusion_depth int, p_user_data: RefCounted) -> gdglslangIncludeResult
+			// f(p_header_name: String, p_includer_name: String, p_inclusion_depth: int, p_user_data: RefCounted) -> gdglslangIncludeResult
 			// only called if should_include_XXX returns true.
 			godot::Callable callback_include_system;
 			godot::Callable callback_include_local;
@@ -53,6 +53,24 @@ namespace gdglslang {
 
 			gIncluderInterface();
 			~gIncluderInterface();
+
+			void set_user_data(godot::Ref<godot::RefCounted> p_user_data) { user_data = p_user_data; }
+			godot::Ref<godot::RefCounted> get_user_data() const { return user_data; }
+
+			void set_callback_should_include_system(godot::Callable p_callback) { callback_should_include_system = p_callback; }
+			godot::Callable get_callback_should_include_system() const { return callback_should_include_system; }
+
+			void set_callback_should_include_local(godot::Callable p_callback) { callback_should_include_local = p_callback; }
+			godot::Callable get_callback_should_include_local() const { return callback_should_include_local; }
+
+			void set_callback_include_system(godot::Callable p_callback) { callback_include_system = p_callback; }
+			godot::Callable get_callback_include_system() const { return callback_include_system; }
+
+			void set_callback_include_local(godot::Callable p_callback) { callback_include_local = p_callback; }
+			godot::Callable get_callback_include_local() const { return callback_include_local; }
+
+			void set_callback_pre_release_include(godot::Callable p_callback) { callback_pre_release_include = p_callback; }
+			godot::Callable get_callback_pre_release_include() const { return callback_pre_release_include; }
 		#pragma endregion
 	};
 }
