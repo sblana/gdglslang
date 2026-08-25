@@ -12,10 +12,10 @@
 
 namespace gdglslang {
 
-	class gGlobalSpace;
-	using gdglslangGlobalSpace = gGlobalSpace;
-	class gGlobalSpace : public godot::Object {
-		GDCLASS(gdglslangGlobalSpace, godot::Object)
+	class gGlobalScope;
+	using gdglslangGlobalScope = gGlobalScope;
+	class gGlobalScope : public godot::Object {
+		GDCLASS(gdglslangGlobalScope, godot::Object)
 		#pragma region Exposed to godot
 		public:
 			enum gEShLanguage : std::uint32_t {
@@ -155,11 +155,11 @@ namespace gdglslang {
 	};
 }
 
-VARIANT_ENUM_CAST(gdglslang::gdglslangGlobalSpace::gEShLanguage);
-VARIANT_ENUM_CAST(gdglslang::gdglslangGlobalSpace::gEShSource);
-VARIANT_ENUM_CAST(gdglslang::gdglslangGlobalSpace::gEShClient);
-VARIANT_ENUM_CAST(gdglslang::gdglslangGlobalSpace::gEShTargetLanguage);
-VARIANT_ENUM_CAST(gdglslang::gdglslangGlobalSpace::gEShTargetClientVersion);
-VARIANT_ENUM_CAST(gdglslang::gdglslangGlobalSpace::gEShTargetLanguageVersion);
-VARIANT_ENUM_CAST(gdglslang::gdglslangGlobalSpace::gEProfile);
-VARIANT_BITFIELD_CAST(gdglslang::gdglslangGlobalSpace::gEShMessages);
+VARIANT_ENUM_CAST(gdglslang::gdglslangGlobalScope::gEShLanguage);
+VARIANT_ENUM_CAST(gdglslang::gdglslangGlobalScope::gEShSource);
+VARIANT_ENUM_CAST(gdglslang::gdglslangGlobalScope::gEShClient);
+VARIANT_ENUM_CAST(gdglslang::gdglslangGlobalScope::gEShTargetLanguage);
+VARIANT_ENUM_CAST(gdglslang::gdglslangGlobalScope::gEShTargetClientVersion);
+VARIANT_ENUM_CAST(gdglslang::gdglslangGlobalScope::gEShTargetLanguageVersion);
+VARIANT_ENUM_CAST(gdglslang::gdglslangGlobalScope::gEProfile);
+VARIANT_BITFIELD_CAST(gdglslang::gdglslangGlobalScope::gEShMessages);

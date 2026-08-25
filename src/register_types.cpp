@@ -9,7 +9,7 @@
 #include "glslang_bindings/t_intermediate.hpp"
 #include "glslang_bindings/spv_build_logger.hpp"
 #include "glslang_bindings/spv_options.hpp"
-#include "glslang_bindings/global_space.hpp"
+#include "glslang_bindings/global_scope.hpp"
 #include "glslang_bindings/t_shader.hpp"
 #include "glslang_bindings/t_program.hpp"
 #include "glslang_bindings/includer/include_result.hpp"
@@ -23,7 +23,7 @@ void initialize_gdglslang(godot::ModuleInitializationLevel p_level) {
 		GDREGISTER_CLASS(gdglslang::gTIntermediate);
 		GDREGISTER_CLASS(gdglslang::gSpvBuildLogger);
 		GDREGISTER_CLASS(gdglslang::gSpvOptions);
-		GDREGISTER_CLASS(gdglslang::gGlobalSpace);
+		GDREGISTER_CLASS(gdglslang::gGlobalScope);
 		GDREGISTER_CLASS(gdglslang::gTShader);
 		GDREGISTER_CLASS(gdglslang::gTProgram);
 		GDREGISTER_CLASS(gdglslang::gIncludeResult);

@@ -1,4 +1,4 @@
-#include "global_space.hpp"
+#include "global_scope.hpp"
 #include <glslang/glslang/Public/ShaderLang.h>
 #include <glslang/glslang/Public/ResourceLimits.h>
 #include <glslang/SPIRV/GlslangToSpv.h>
@@ -7,7 +7,7 @@
 
 namespace gdglslang {
 
-	void gGlobalSpace::_bind_methods() {
+	void gGlobalScope::_bind_methods() {
 		#pragma region Enums
 			BIND_ENUM_CONSTANT(EShLangVertex)
 			BIND_ENUM_CONSTANT(EShLangTessControl)
@@ -88,81 +88,81 @@ namespace gdglslang {
 			BIND_BITFIELD_FLAG(EShMsgRelaxSetBindingLimits)
 		#pragma endregion
 
-		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("initialize_process"), &gGlobalSpace::initialize_process);
-		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("finalize_process"), &gGlobalSpace::finalize_process);
+		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("initialize_process"), &gGlobalScope::initialize_process);
+		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("finalize_process"), &gGlobalScope::finalize_process);
 
-		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("get_default_resources"), &gGlobalSpace::get_default_resources);
+		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("get_default_resources"), &gGlobalScope::get_default_resources);
 
-		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("get_spirv_version"), &gGlobalSpace::get_spirv_version);
-		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("get_spirv_generator_version"), &gGlobalSpace::get_spirv_generator_version);
-		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("glslang_to_spv", "p_intermediate", "p_logger", "p_options"), &gGlobalSpace::glslang_to_spv);
-		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("glslang_to_spv_1", "p_intermediate", "p_options"), &gGlobalSpace::glslang_to_spv_1);
+		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("get_spirv_version"), &gGlobalScope::get_spirv_version);
+		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("get_spirv_generator_version"), &gGlobalScope::get_spirv_generator_version);
+		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("glslang_to_spv", "p_intermediate", "p_logger", "p_options"), &gGlobalScope::glslang_to_spv);
+		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("glslang_to_spv_1", "p_intermediate", "p_options"), &gGlobalScope::glslang_to_spv_1);
 	}
 
-	EShLanguage gGlobalSpace::convert_to_glslang_enum(gGlobalSpace::gEShLanguage p_value) {
+	EShLanguage gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShLanguage p_value) {
 		return EShLanguage(p_value);
 	}
 
-	glslang::EShSource gGlobalSpace::convert_to_glslang_enum(gGlobalSpace::gEShSource p_value) {
+	glslang::EShSource gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShSource p_value) {
 		return glslang::EShSource(p_value);
 	}
 
-	glslang::EShClient gGlobalSpace::convert_to_glslang_enum(gGlobalSpace::gEShClient p_value) {
+	glslang::EShClient gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShClient p_value) {
 		return glslang::EShClient(p_value);
 	}
 
-	glslang::EShTargetLanguage gGlobalSpace::convert_to_glslang_enum(gGlobalSpace::gEShTargetLanguage p_value) {
+	glslang::EShTargetLanguage gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShTargetLanguage p_value) {
 		return glslang::EShTargetLanguage(p_value);
 	}
 
-	glslang::EShTargetClientVersion gGlobalSpace::convert_to_glslang_enum(gGlobalSpace::gEShTargetClientVersion p_value) {
+	glslang::EShTargetClientVersion gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShTargetClientVersion p_value) {
 		return glslang::EShTargetClientVersion(p_value);
 	}
 
-	glslang::EShTargetLanguageVersion gGlobalSpace::convert_to_glslang_enum(gGlobalSpace::gEShTargetLanguageVersion p_value) {
+	glslang::EShTargetLanguageVersion gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShTargetLanguageVersion p_value) {
 		return glslang::EShTargetLanguageVersion(p_value);
 	}
 
-	EProfile gGlobalSpace::convert_to_glslang_enum(gGlobalSpace::gEProfile p_value) {
+	EProfile gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEProfile p_value) {
 		return EProfile(p_value);
 	}
 
-	EShMessages gGlobalSpace::convert_to_glslang_enum(gGlobalSpace::gEShMessages p_value) {
+	EShMessages gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShMessages p_value) {
 		return EShMessages(p_value);
 	}
 
 
-	gGlobalSpace::gEShLanguage gGlobalSpace::convert_to_gdglslang_enum(EShLanguage p_value) {
-		return gGlobalSpace::gEShLanguage(p_value);
+	gGlobalScope::gEShLanguage gGlobalScope::convert_to_gdglslang_enum(EShLanguage p_value) {
+		return gGlobalScope::gEShLanguage(p_value);
 	}
 
 
-	bool gGlobalSpace::initialize_process() {
+	bool gGlobalScope::initialize_process() {
 		return glslang::InitializeProcess();
 	}
 
-	void gGlobalSpace::finalize_process() {
+	void gGlobalScope::finalize_process() {
 		glslang::FinalizeProcess();
 	}
 
-	godot::Ref<gTBuiltInResource> gGlobalSpace::get_default_resources() {
+	godot::Ref<gTBuiltInResource> gGlobalScope::get_default_resources() {
 		godot::Ref<gTBuiltInResource> ret = memnew(gTBuiltInResource);
 		ret->data = *GetDefaultResources();
 		return ret;
 	}
 
-	godot::String gGlobalSpace::get_spirv_version() {
+	godot::String gGlobalScope::get_spirv_version() {
 		std::string version;
 		glslang::GetSpirvVersion(version);
 
 		return godot::String(version.c_str());
 	}
 
-	int gGlobalSpace::get_spirv_generator_version() {
+	int gGlobalScope::get_spirv_generator_version() {
 		return glslang::GetSpirvGeneratorVersion();
 	}
 
-	godot::PackedByteArray gGlobalSpace::glslang_to_spv(godot::Ref<gTIntermediate> p_intermediate, godot::Ref<gSpvBuildLogger> p_logger, godot::Ref<gSpvOptions> p_options) {
+	godot::PackedByteArray gGlobalScope::glslang_to_spv(godot::Ref<gTIntermediate> p_intermediate, godot::Ref<gSpvBuildLogger> p_logger, godot::Ref<gSpvOptions> p_options) {
 		godot::PackedByteArray ret;
 		ERR_FAIL_COND_V(p_intermediate.is_null(), ret);
 		ERR_FAIL_NULL_V(p_intermediate->data, ret);
@@ -177,7 +177,7 @@ namespace gdglslang {
 		return ret;
 	}
 
-	godot::PackedByteArray gGlobalSpace::glslang_to_spv_1(godot::Ref<gTIntermediate> p_intermediate, godot::Ref<gSpvOptions> p_options) {
+	godot::PackedByteArray gGlobalScope::glslang_to_spv_1(godot::Ref<gTIntermediate> p_intermediate, godot::Ref<gSpvOptions> p_options) {
 		return glslang_to_spv(p_intermediate, godot::Ref<gSpvBuildLogger>(memnew(gSpvBuildLogger)), p_options);
 	}
 }
