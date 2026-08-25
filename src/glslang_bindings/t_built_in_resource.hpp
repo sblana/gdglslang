@@ -7,9 +7,9 @@
 namespace gdglslang {
 
 	class gTBuiltInResource;
-	using gdglslangTBuiltInResource = gTBuiltInResource;
+	using GlslangTBuiltInResource = gTBuiltInResource;
 	class gTBuiltInResource : public godot::RefCounted {
-		GDCLASS(gdglslangTBuiltInResource, godot::RefCounted)
+		GDCLASS(GlslangTBuiltInResource, godot::RefCounted)
 		protected:
 			static void _bind_methods() {}
 

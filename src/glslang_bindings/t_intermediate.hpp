@@ -6,9 +6,9 @@ namespace gdglslang {
 
 	// class just for passing around an opaque glslang::TIntermediate *
 	class gTIntermediate;
-	using gdglslangTIntermediate = gTIntermediate;
+	using GDGLIntermediate = gTIntermediate;
 	class gTIntermediate : public godot::RefCounted {
-		GDCLASS(gdglslangTIntermediate, godot::RefCounted)
+		GDCLASS(GDGLIntermediate, godot::RefCounted)
 		protected:
 			static void _bind_methods() {}
 

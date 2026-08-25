@@ -11,9 +11,9 @@ namespace gdglslang {
 	}
 
 	class gIncluderInterface;
-	using gdglslangIncluderInterface = gIncluderInterface;
+	using GlslangIncluderInterface = gIncluderInterface;
 	class gIncluderInterface : public godot::RefCounted {
-		GDCLASS(gdglslangIncluderInterface, godot::RefCounted)
+		GDCLASS(GlslangIncluderInterface, godot::RefCounted)
 		private:
 			godot::HashSet<godot::Ref<gIncludeResult>> include_results;
 
@@ -42,12 +42,12 @@ namespace gdglslang {
 			godot::Callable callback_should_include_system;
 			godot::Callable callback_should_include_local;
 
-			// f(p_header_name: String, p_includer_name: String, p_inclusion_depth: int, p_user_data: RefCounted) -> gdglslangIncludeResult
+			// f(p_header_name: String, p_includer_name: String, p_inclusion_depth: int, p_user_data: RefCounted) -> GlslangIncludeResult
 			// only called if should_include_XXX returns true.
 			godot::Callable callback_include_system;
 			godot::Callable callback_include_local;
 
-			// f(p_result: gdglslangIncludeResult, p_user_data: RefCounted) -> void
+			// f(p_result: GlslangIncludeResult, p_user_data: RefCounted) -> void
 			// user doesn't control the release of p_result; this is called before p_result is released
 			godot::Callable callback_pre_release_include;
 

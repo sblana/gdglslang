@@ -5,9 +5,9 @@
 namespace gdglslang {
 
 	class gTLimits;
-	using gdglslangTLimits = gTLimits;
+	using GlslangTLimits = gTLimits;
 	class gTLimits : public godot::RefCounted {
-		GDCLASS(gdglslangTLimits, godot::RefCounted)
+		GDCLASS(GlslangTLimits, godot::RefCounted)
 		protected:
 			static void _bind_methods() {}
 

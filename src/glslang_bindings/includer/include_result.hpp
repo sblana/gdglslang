@@ -6,9 +6,9 @@
 namespace gdglslang {
 
 	class gIncludeResult;
-	using gdglslangIncludeResult = gIncludeResult;
+	using GlslangIncludeResult = gIncludeResult;
 	class gIncludeResult : public godot::RefCounted {
-		GDCLASS(gdglslangIncludeResult, godot::RefCounted)
+		GDCLASS(GlslangIncludeResult, godot::RefCounted)
 		private:
 			godot::CharString header_name_string;
 			godot::CharString header_data_string;

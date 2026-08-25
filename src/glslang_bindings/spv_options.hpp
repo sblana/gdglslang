@@ -5,9 +5,9 @@
 namespace gdglslang {
 
 	class gSpvOptions;
-	using gdglslangSpvOptions = gSpvOptions;
+	using GlslangSpvOptions = gSpvOptions;
 	class gSpvOptions : public godot::RefCounted {
-		GDCLASS(gdglslangSpvOptions, godot::RefCounted)
+		GDCLASS(GlslangSpvOptions, godot::RefCounted)
 		protected:
 			static void _bind_methods() {}
 

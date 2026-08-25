@@ -6,9 +6,9 @@
 namespace gdglslang {
 
 	class gTProgram;
-	using gdglslangTProgram = gTProgram;
+	using GlslangTProgram = gTProgram;
 	class gTProgram : public godot::RefCounted {
-		GDCLASS(gdglslangTProgram, godot::RefCounted)
+		GDCLASS(GlslangTProgram, godot::RefCounted)
 		private:
 			godot::Vector<godot::Ref<gTShader>> shaders;
 

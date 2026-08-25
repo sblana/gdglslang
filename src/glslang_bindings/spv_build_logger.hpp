@@ -5,9 +5,9 @@
 namespace gdglslang {
 
 	class gSpvBuildLogger;
-	using gdglslangSpvBuildLogger = gSpvBuildLogger;
+	using GlslangSpvBuildLogger = gSpvBuildLogger;
 	class gSpvBuildLogger : public godot::RefCounted {
-		GDCLASS(gdglslangSpvBuildLogger, godot::RefCounted)
+		GDCLASS(GlslangSpvBuildLogger, godot::RefCounted)
 		protected:
 			static void _bind_methods();
 

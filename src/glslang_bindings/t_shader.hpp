@@ -7,9 +7,9 @@
 namespace gdglslang {
 
 	class gTShader;
-	using gdglslangTShader = gTShader;
+	using GlslangTShader = gTShader;
 	class gTShader : public godot::RefCounted {
-		GDCLASS(gdglslangTShader, godot::RefCounted)
+		GDCLASS(GlslangTShader, godot::RefCounted)
 		private:
 			std::vector<godot::CharString> strings;
 			std::vector<godot::CharString> names;
