@@ -146,9 +146,8 @@ namespace gdglslang {
 	}
 
 	godot::Ref<gTBuiltInResource> gGlobalScope::get_default_resources() {
-		godot::Ref<gTBuiltInResource> ret = memnew(gTBuiltInResource);
-		ret->data = *GetDefaultResources();
-		return ret;
+		// gTBuiltInResource should init to GetDefaultResources
+		return memnew(gTBuiltInResource);
 	}
 
 	godot::String gGlobalScope::get_spirv_version() {
