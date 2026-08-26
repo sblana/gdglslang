@@ -24,8 +24,8 @@ namespace gdglslang {
 		data->addShader(p_shader->data);
 	}
 
-	bool gTProgram::link(godot::BitField<gGlobalScope::gEShMessages> p_messages) {
-		return data->link(gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShMessages(int64_t(p_messages))));
+	bool gTProgram::link(godot::BitField<gGlobalScope::Messages> p_messages) {
+		return data->link(gGlobalScope::convert_to_glslang_enum(gGlobalScope::Messages(int64_t(p_messages))));
 	}
 
 	godot::String gTProgram::get_info_log() {
@@ -36,7 +36,7 @@ namespace gdglslang {
 		return godot::String(data->getInfoDebugLog());
 	}
 
-	godot::Ref<gTIntermediate> gTProgram::get_intermediate(gGlobalScope::gEShLanguage p_stage) const {
+	godot::Ref<gTIntermediate> gTProgram::get_intermediate(gGlobalScope::Language p_stage) const {
 		godot::Ref<gTIntermediate> ret = memnew(gTIntermediate);
 		ret->data = data->getIntermediate(gGlobalScope::convert_to_glslang_enum(p_stage));
 		return ret;

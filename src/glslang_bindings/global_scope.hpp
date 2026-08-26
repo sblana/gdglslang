@@ -18,100 +18,101 @@ namespace gdglslang {
 		GDCLASS(GlslangGlobalScope, godot::Object)
 		#pragma region Exposed to godot
 		public:
-			enum gEShLanguage : std::uint32_t {
-				EShLangVertex,
-				EShLangTessControl,
-				EShLangTessEvaluation,
-				EShLangGeometry,
-				EShLangFragment,
-				EShLangCompute,
-				EShLangRayGen,
-				EShLangRayGenNV = EShLangRayGen,
-				EShLangIntersect,
-				EShLangIntersectNV = EShLangIntersect,
-				EShLangAnyHit,
-				EShLangAnyHitNV = EShLangAnyHit,
-				EShLangClosestHit,
-				EShLangClosestHitNV = EShLangClosestHit,
-				EShLangMiss,
-				EShLangMissNV = EShLangMiss,
-				EShLangCallable,
-				EShLangCallableNV = EShLangCallable,
-				EShLangTask,
-				EShLangTaskNV = EShLangTask,
-				EShLangMesh,
-				EShLangMeshNV = EShLangMesh,
+			enum Language : std::uint32_t {
+				LANGUAGE_VERTEX,
+				LANGUAGE_TESS_CONTROL,
+				LANGUAGE_TESS_EVALUATION,
+				LANGUAGE_GEOMETRY,
+				LANGUAGE_FRAGMENT,
+				LANGUAGE_COMPUTE,
+				LANGUAGE_RAY_GEN,
+				LANGUAGE_RAY_GEN_NV = LANGUAGE_RAY_GEN,
+				LANGUAGE_INTERSECT,
+				LANGUAGE_INTERSECT_NV = LANGUAGE_INTERSECT,
+				LANGUAGE_ANY_HIT,
+				LANGUAGE_ANY_HIT_NV = LANGUAGE_ANY_HIT,
+				LANGUAGE_CLOSEST_HIT,
+				LANGUAGE_CLOSEST_HIT_NV = LANGUAGE_CLOSEST_HIT,
+				LANGUAGE_MISS,
+				LANGUAGE_MISS_NV = LANGUAGE_MISS,
+				LANGUAGE_CALLABLE,
+				LANGUAGE_CALLABLE_NV = LANGUAGE_CALLABLE,
+				LANGUAGE_TASK,
+				LANGUAGE_TASK_NV = LANGUAGE_TASK,
+				LANGUAGE_MESH,
+				LANGUAGE_MESH_NV = LANGUAGE_MESH,
+				LANGUAGE_MAX
 			};
 
 			// enum gEShLanguageMask : std::uint32_t {};
 
-			enum gEShSource : std::uint32_t {
-				EShSourceNone,
-				EShSourceGlsl,
-				EShSourceHlsl,
+			enum Source : std::uint32_t {
+				SOURCE_NONE,
+				SOURCE_GLSL,
+				SOURCE_HLSL,
 			};
 
-			enum gEShClient : std::uint32_t {
-				EShClientNone,
-				EShClientVulkan,
-				EShClientOpenGL,
+			enum Client : std::uint32_t {
+				CLIENT_NONE,
+				CLIENT_VULKAN,
+				CLIENT_OPEN_GL,
 			};
 
-			enum gEShTargetLanguage : std::uint32_t {
-				EShTargetNone,
-				EShTargetSpv,
+			enum TargetLanguage : std::uint32_t {
+				TARGET_LANGUAGE_NONE,
+				TARGET_LANGUAGE_SPV,
 			};
 
-			enum gEShTargetClientVersion : std::uint32_t {
-				EShTargetVulkan_1_0 = (1 << 22),
-				EShTargetVulkan_1_1 = (1 << 22) | (1 << 12),
-				EShTargetVulkan_1_2 = (1 << 22) | (2 << 12),
-				EShTargetVulkan_1_3 = (1 << 22) | (3 << 12),
-				EShTargetVulkan_1_4 = (1 << 22) | (4 << 12),
-				EShTargetOpenGL_450 = 450,
+			enum TargetClientVersion : std::uint32_t {
+				TARGET_CLIENT_VERSION_VULKAN_1_0  = (1 << 22),
+				TARGET_CLIENT_VERSION_VULKAN_1_1  = (1 << 22) | (1 << 12),
+				TARGET_CLIENT_VERSION_VULKAN_1_2  = (1 << 22) | (2 << 12),
+				TARGET_CLIENT_VERSION_VULKAN_1_3  = (1 << 22) | (3 << 12),
+				TARGET_CLIENT_VERSION_VULKAN_1_4  = (1 << 22) | (4 << 12),
+				TARGET_CLIENT_VERSION_OPEN_GL_450 = 450,
 			};
 
-			enum gEShTargetLanguageVersion : std::uint32_t {
-				EShTargetSpv_1_0 = (1 << 16),
-				EShTargetSpv_1_1 = (1 << 16) | (1 << 8),
-				EShTargetSpv_1_2 = (1 << 16) | (2 << 8),
-				EShTargetSpv_1_3 = (1 << 16) | (3 << 8),
-				EShTargetSpv_1_4 = (1 << 16) | (4 << 8),
-				EShTargetSpv_1_5 = (1 << 16) | (5 << 8),
-				EShTargetSpv_1_6 = (1 << 16) | (6 << 8),
+			enum TargetLanguageVersion : std::uint32_t {
+				TARGET_LANGUAGE_VERSION_SPV_1_0 = (1 << 16),
+				TARGET_LANGUAGE_VERSION_SPV_1_1 = (1 << 16) | (1 << 8),
+				TARGET_LANGUAGE_VERSION_SPV_1_2 = (1 << 16) | (2 << 8),
+				TARGET_LANGUAGE_VERSION_SPV_1_3 = (1 << 16) | (3 << 8),
+				TARGET_LANGUAGE_VERSION_SPV_1_4 = (1 << 16) | (4 << 8),
+				TARGET_LANGUAGE_VERSION_SPV_1_5 = (1 << 16) | (5 << 8),
+				TARGET_LANGUAGE_VERSION_SPV_1_6 = (1 << 16) | (6 << 8),
 			};
 
-			enum gEProfile : std::uint32_t {
-				EBadProfile           = 0,
-				ENoProfile            = (1 << 0),
-				ECoreProfile          = (1 << 1),
-				ECompatibilityProfile = (1 << 2),
-				EEsProfile            = (1 << 3),
+			enum Profile : std::uint32_t {
+				PROFILE_BAD_PROFILE           = 0,
+				PROFILE_NO_PROFILE            = (1 << 0),
+				PROFILE_CORE_PROFILE          = (1 << 1),
+				PROFILE_COMPATIBILITY_PROFILE = (1 << 2),
+				PROFILE_ES_PROFILE            = (1 << 3),
 			};
 
-			enum gEShMessages : std::uint32_t {
-				EShMsgDefault               = 0,
-				EShMsgRelaxedErrors         = (1 << 0),
-				EShMsgSuppressWarnings      = (1 << 1),
-				EShMsgAST                   = (1 << 2),
-				EShMsgSpvRules              = (1 << 3),
-				EShMsgVulkanRules           = (1 << 4),
-				EShMsgOnlyPreprocessor      = (1 << 5),
-				EShMsgReadHlsl              = (1 << 6),
-				EShMsgCascadingErrors       = (1 << 7),
-				EShMsgKeepUncalled          = (1 << 8),
-				EShMsgHlslOffsets           = (1 << 9),
-				EShMsgDebugInfo             = (1 << 10),
-				EShMsgHlslEnable16BitTypes  = (1 << 11),
-				EShMsgHlslLegalization      = (1 << 12),
-				EShMsgHlslDX9Compatible     = (1 << 13),
-				EShMsgBuiltinSymbolTable    = (1 << 14),
-				EShMsgEnhanced              = (1 << 15),
-				EShMsgAbsolutePath          = (1 << 16),
-				EShMsgDisplayErrorColumn    = (1 << 17),
-				EShMsgLinkTimeOptimization  = (1 << 18),
-				EShMsgValidateCrossStageIO  = (1 << 19),
-				EShMsgRelaxSetBindingLimits = (1 << 20),
+			enum Messages : std::uint32_t {
+				MESSAGE_DEFAULT                  = 0,
+				MESSAGE_RELAXED_ERRORS           = (1 << 0),
+				MESSAGE_SUPPRESS_WARNINGS        = (1 << 1),
+				MESSAGE_AST                      = (1 << 2),
+				MESSAGE_SPV_RULES                = (1 << 3),
+				MESSAGE_VULKAN_RULES             = (1 << 4),
+				MESSAGE_ONLY_PREPROCESSOR        = (1 << 5),
+				MESSAGE_READ_HLSL                = (1 << 6),
+				MESSAGE_CASCADING_ERRORS         = (1 << 7),
+				MESSAGE_KEEP_UNCALLED            = (1 << 8),
+				MESSAGE_HLSL_OFFSETS             = (1 << 9),
+				MESSAGE_DEBUG_INFO               = (1 << 10),
+				MESSAGE_HLSL_ENABLE16_BIT_TYPES  = (1 << 11),
+				MESSAGE_HLSL_LEGALIZATION        = (1 << 12),
+				MESSAGE_HLSL_DX9_COMPATIBLE      = (1 << 13),
+				MESSAGE_BUILTIN_SYMBOL_TABLE     = (1 << 14),
+				MESSAGE_ENHANCED                 = (1 << 15),
+				MESSAGE_ABSOLUTE_PATH            = (1 << 16),
+				MESSAGE_DISPLAY_ERROR_COLUMN     = (1 << 17),
+				MESSAGE_LINK_TIME_OPTIMIZATION   = (1 << 18),
+				MESSAGE_VALIDATE_CROSS_STAGE_IO  = (1 << 19),
+				MESSAGE_RELAX_SET_BINDING_LIMITS = (1 << 20),
 			};
 		#pragma endregion
 
@@ -119,23 +120,23 @@ namespace gdglslang {
 			static void _bind_methods();
 
 		public:
-			static EShLanguage                       convert_to_glslang_enum(gEShLanguage              p_value);
-			static glslang::EShSource                convert_to_glslang_enum(gEShSource                p_value);
-			static glslang::EShClient                convert_to_glslang_enum(gEShClient                p_value);
-			static glslang::EShTargetLanguage        convert_to_glslang_enum(gEShTargetLanguage        p_value);
-			static glslang::EShTargetClientVersion   convert_to_glslang_enum(gEShTargetClientVersion   p_value);
-			static glslang::EShTargetLanguageVersion convert_to_glslang_enum(gEShTargetLanguageVersion p_value);
-			static EProfile                          convert_to_glslang_enum(gEProfile                 p_value);
-			static EShMessages                       convert_to_glslang_enum(gEShMessages              p_value);
+			static EShLanguage                       convert_to_glslang_enum(Language              p_value);
+			static glslang::EShSource                convert_to_glslang_enum(Source                p_value);
+			static glslang::EShClient                convert_to_glslang_enum(Client                p_value);
+			static glslang::EShTargetLanguage        convert_to_glslang_enum(TargetLanguage        p_value);
+			static glslang::EShTargetClientVersion   convert_to_glslang_enum(TargetClientVersion   p_value);
+			static glslang::EShTargetLanguageVersion convert_to_glslang_enum(TargetLanguageVersion p_value);
+			static EProfile                          convert_to_glslang_enum(Profile                 p_value);
+			static EShMessages                       convert_to_glslang_enum(Messages              p_value);
 
-			static gEShLanguage              convert_to_gdglslang_enum(EShLanguage                       p_value);
-			// static gEShSource                convert_to_gdglslang_enum(glslang::EShSource                p_value);
-			// static gEShClient                convert_to_gdglslang_enum(glslang::EShClient                p_value);
-			// static gEShTargetLanguage        convert_to_gdglslang_enum(glslang::EShTargetLanguage        p_value);
-			// static gEShTargetClientVersion   convert_to_gdglslang_enum(glslang::EShTargetClientVersion   p_value);
-			// static gEShTargetLanguageVersion convert_to_gdglslang_enum(glslang::EShTargetLanguageVersion p_value);
-			// static gEProfile                 convert_to_gdglslang_enum(EProfile                          p_value);
-			// static gEShMessages              convert_to_gdglslang_enum(EShMessages                       p_value);
+			static Language              convert_to_gdglslang_enum(EShLanguage                       p_value);
+			// static Source                convert_to_gdglslang_enum(glslang::EShSource                p_value);
+			// static Client                convert_to_gdglslang_enum(glslang::EShClient                p_value);
+			// static TargetLanguage        convert_to_gdglslang_enum(glslang::EShTargetLanguage        p_value);
+			// static TargetClientVersion   convert_to_gdglslang_enum(glslang::EShTargetClientVersion   p_value);
+			// static TargetLanguageVersion convert_to_gdglslang_enum(glslang::EShTargetLanguageVersion p_value);
+			// static Profile                 convert_to_gdglslang_enum(EProfile                          p_value);
+			// static Messages              convert_to_gdglslang_enum(EShMessages                       p_value);
 
 		#pragma region Exposed to godot
 		public:
@@ -155,11 +156,11 @@ namespace gdglslang {
 	};
 }
 
-VARIANT_ENUM_CAST(gdglslang::GlslangGlobalScope::gEShLanguage);
-VARIANT_ENUM_CAST(gdglslang::GlslangGlobalScope::gEShSource);
-VARIANT_ENUM_CAST(gdglslang::GlslangGlobalScope::gEShClient);
-VARIANT_ENUM_CAST(gdglslang::GlslangGlobalScope::gEShTargetLanguage);
-VARIANT_ENUM_CAST(gdglslang::GlslangGlobalScope::gEShTargetClientVersion);
-VARIANT_ENUM_CAST(gdglslang::GlslangGlobalScope::gEShTargetLanguageVersion);
-VARIANT_ENUM_CAST(gdglslang::GlslangGlobalScope::gEProfile);
-VARIANT_BITFIELD_CAST(gdglslang::GlslangGlobalScope::gEShMessages);
+VARIANT_ENUM_CAST(gdglslang::GlslangGlobalScope::Language);
+VARIANT_ENUM_CAST(gdglslang::GlslangGlobalScope::Source);
+VARIANT_ENUM_CAST(gdglslang::GlslangGlobalScope::Client);
+VARIANT_ENUM_CAST(gdglslang::GlslangGlobalScope::TargetLanguage);
+VARIANT_ENUM_CAST(gdglslang::GlslangGlobalScope::TargetClientVersion);
+VARIANT_ENUM_CAST(gdglslang::GlslangGlobalScope::TargetLanguageVersion);
+VARIANT_ENUM_CAST(gdglslang::GlslangGlobalScope::Profile);
+VARIANT_BITFIELD_CAST(gdglslang::GlslangGlobalScope::Messages);

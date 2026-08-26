@@ -9,83 +9,84 @@ namespace gdglslang {
 
 	void gGlobalScope::_bind_methods() {
 		#pragma region Enums
-			BIND_ENUM_CONSTANT(EShLangVertex)
-			BIND_ENUM_CONSTANT(EShLangTessControl)
-			BIND_ENUM_CONSTANT(EShLangTessEvaluation)
-			BIND_ENUM_CONSTANT(EShLangGeometry)
-			BIND_ENUM_CONSTANT(EShLangFragment)
-			BIND_ENUM_CONSTANT(EShLangCompute)
-			BIND_ENUM_CONSTANT(EShLangRayGen)
-			BIND_ENUM_CONSTANT(EShLangRayGenNV)
-			BIND_ENUM_CONSTANT(EShLangIntersect)
-			BIND_ENUM_CONSTANT(EShLangIntersectNV)
-			BIND_ENUM_CONSTANT(EShLangAnyHit)
-			BIND_ENUM_CONSTANT(EShLangAnyHitNV)
-			BIND_ENUM_CONSTANT(EShLangClosestHit)
-			BIND_ENUM_CONSTANT(EShLangClosestHitNV)
-			BIND_ENUM_CONSTANT(EShLangMiss)
-			BIND_ENUM_CONSTANT(EShLangMissNV)
-			BIND_ENUM_CONSTANT(EShLangCallable)
-			BIND_ENUM_CONSTANT(EShLangCallableNV)
-			BIND_ENUM_CONSTANT(EShLangTask)
-			BIND_ENUM_CONSTANT(EShLangTaskNV)
-			BIND_ENUM_CONSTANT(EShLangMesh)
-			BIND_ENUM_CONSTANT(EShLangMeshNV)
+			BIND_ENUM_CONSTANT(LANGUAGE_VERTEX)
+			BIND_ENUM_CONSTANT(LANGUAGE_TESS_CONTROL)
+			BIND_ENUM_CONSTANT(LANGUAGE_TESS_EVALUATION)
+			BIND_ENUM_CONSTANT(LANGUAGE_GEOMETRY)
+			BIND_ENUM_CONSTANT(LANGUAGE_FRAGMENT)
+			BIND_ENUM_CONSTANT(LANGUAGE_COMPUTE)
+			BIND_ENUM_CONSTANT(LANGUAGE_RAY_GEN)
+			BIND_ENUM_CONSTANT(LANGUAGE_RAY_GEN_NV)
+			BIND_ENUM_CONSTANT(LANGUAGE_INTERSECT)
+			BIND_ENUM_CONSTANT(LANGUAGE_INTERSECT_NV)
+			BIND_ENUM_CONSTANT(LANGUAGE_ANY_HIT)
+			BIND_ENUM_CONSTANT(LANGUAGE_ANY_HIT_NV)
+			BIND_ENUM_CONSTANT(LANGUAGE_CLOSEST_HIT)
+			BIND_ENUM_CONSTANT(LANGUAGE_CLOSEST_HIT_NV)
+			BIND_ENUM_CONSTANT(LANGUAGE_MISS)
+			BIND_ENUM_CONSTANT(LANGUAGE_MISS_NV)
+			BIND_ENUM_CONSTANT(LANGUAGE_CALLABLE)
+			BIND_ENUM_CONSTANT(LANGUAGE_CALLABLE_NV)
+			BIND_ENUM_CONSTANT(LANGUAGE_TASK)
+			BIND_ENUM_CONSTANT(LANGUAGE_TASK_NV)
+			BIND_ENUM_CONSTANT(LANGUAGE_MESH)
+			BIND_ENUM_CONSTANT(LANGUAGE_MESH_NV)
+			BIND_ENUM_CONSTANT(LANGUAGE_MAX)
 
-			BIND_ENUM_CONSTANT(EShSourceNone)
-			BIND_ENUM_CONSTANT(EShSourceGlsl)
-			BIND_ENUM_CONSTANT(EShSourceHlsl)
+			BIND_ENUM_CONSTANT(SOURCE_NONE)
+			BIND_ENUM_CONSTANT(SOURCE_GLSL)
+			BIND_ENUM_CONSTANT(SOURCE_HLSL)
 
-			BIND_ENUM_CONSTANT(EShClientNone)
-			BIND_ENUM_CONSTANT(EShClientVulkan)
-			BIND_ENUM_CONSTANT(EShClientOpenGL)
+			BIND_ENUM_CONSTANT(CLIENT_NONE)
+			BIND_ENUM_CONSTANT(CLIENT_VULKAN)
+			BIND_ENUM_CONSTANT(CLIENT_OPEN_GL)
 
-			BIND_ENUM_CONSTANT(EShTargetNone)
-			BIND_ENUM_CONSTANT(EShTargetSpv)
+			BIND_ENUM_CONSTANT(TARGET_LANGUAGE_NONE)
+			BIND_ENUM_CONSTANT(TARGET_LANGUAGE_SPV)
 
-			BIND_ENUM_CONSTANT(EShTargetVulkan_1_0)
-			BIND_ENUM_CONSTANT(EShTargetVulkan_1_1)
-			BIND_ENUM_CONSTANT(EShTargetVulkan_1_2)
-			BIND_ENUM_CONSTANT(EShTargetVulkan_1_3)
-			BIND_ENUM_CONSTANT(EShTargetVulkan_1_4)
-			BIND_ENUM_CONSTANT(EShTargetOpenGL_450)
+			BIND_ENUM_CONSTANT(TARGET_CLIENT_VERSION_VULKAN_1_0)
+			BIND_ENUM_CONSTANT(TARGET_CLIENT_VERSION_VULKAN_1_1)
+			BIND_ENUM_CONSTANT(TARGET_CLIENT_VERSION_VULKAN_1_2)
+			BIND_ENUM_CONSTANT(TARGET_CLIENT_VERSION_VULKAN_1_3)
+			BIND_ENUM_CONSTANT(TARGET_CLIENT_VERSION_VULKAN_1_4)
+			BIND_ENUM_CONSTANT(TARGET_CLIENT_VERSION_OPEN_GL_450)
 
-			BIND_ENUM_CONSTANT(EShTargetSpv_1_0)
-			BIND_ENUM_CONSTANT(EShTargetSpv_1_1)
-			BIND_ENUM_CONSTANT(EShTargetSpv_1_2)
-			BIND_ENUM_CONSTANT(EShTargetSpv_1_3)
-			BIND_ENUM_CONSTANT(EShTargetSpv_1_4)
-			BIND_ENUM_CONSTANT(EShTargetSpv_1_5)
-			BIND_ENUM_CONSTANT(EShTargetSpv_1_6)
+			BIND_ENUM_CONSTANT(TARGET_LANGUAGE_VERSION_SPV_1_0)
+			BIND_ENUM_CONSTANT(TARGET_LANGUAGE_VERSION_SPV_1_1)
+			BIND_ENUM_CONSTANT(TARGET_LANGUAGE_VERSION_SPV_1_2)
+			BIND_ENUM_CONSTANT(TARGET_LANGUAGE_VERSION_SPV_1_3)
+			BIND_ENUM_CONSTANT(TARGET_LANGUAGE_VERSION_SPV_1_4)
+			BIND_ENUM_CONSTANT(TARGET_LANGUAGE_VERSION_SPV_1_5)
+			BIND_ENUM_CONSTANT(TARGET_LANGUAGE_VERSION_SPV_1_6)
 
-			BIND_ENUM_CONSTANT(EBadProfile)
-			BIND_ENUM_CONSTANT(ENoProfile)
-			BIND_ENUM_CONSTANT(ECoreProfile)
-			BIND_ENUM_CONSTANT(ECompatibilityProfile)
-			BIND_ENUM_CONSTANT(EEsProfile)
+			BIND_ENUM_CONSTANT(PROFILE_BAD_PROFILE)
+			BIND_ENUM_CONSTANT(PROFILE_NO_PROFILE)
+			BIND_ENUM_CONSTANT(PROFILE_CORE_PROFILE)
+			BIND_ENUM_CONSTANT(PROFILE_COMPATIBILITY_PROFILE)
+			BIND_ENUM_CONSTANT(PROFILE_ES_PROFILE)
 
-			BIND_BITFIELD_FLAG(EShMsgDefault)
-			BIND_BITFIELD_FLAG(EShMsgRelaxedErrors)
-			BIND_BITFIELD_FLAG(EShMsgSuppressWarnings)
-			BIND_BITFIELD_FLAG(EShMsgAST)
-			BIND_BITFIELD_FLAG(EShMsgSpvRules)
-			BIND_BITFIELD_FLAG(EShMsgVulkanRules)
-			BIND_BITFIELD_FLAG(EShMsgOnlyPreprocessor)
-			BIND_BITFIELD_FLAG(EShMsgReadHlsl)
-			BIND_BITFIELD_FLAG(EShMsgCascadingErrors)
-			BIND_BITFIELD_FLAG(EShMsgKeepUncalled)
-			BIND_BITFIELD_FLAG(EShMsgHlslOffsets)
-			BIND_BITFIELD_FLAG(EShMsgDebugInfo)
-			BIND_BITFIELD_FLAG(EShMsgHlslEnable16BitTypes)
-			BIND_BITFIELD_FLAG(EShMsgHlslLegalization)
-			BIND_BITFIELD_FLAG(EShMsgHlslDX9Compatible)
-			BIND_BITFIELD_FLAG(EShMsgBuiltinSymbolTable)
-			BIND_BITFIELD_FLAG(EShMsgEnhanced)
-			BIND_BITFIELD_FLAG(EShMsgAbsolutePath)
-			BIND_BITFIELD_FLAG(EShMsgDisplayErrorColumn)
-			BIND_BITFIELD_FLAG(EShMsgLinkTimeOptimization)
-			BIND_BITFIELD_FLAG(EShMsgValidateCrossStageIO)
-			BIND_BITFIELD_FLAG(EShMsgRelaxSetBindingLimits)
+			BIND_BITFIELD_FLAG(MESSAGE_DEFAULT)
+			BIND_BITFIELD_FLAG(MESSAGE_RELAXED_ERRORS)
+			BIND_BITFIELD_FLAG(MESSAGE_SUPPRESS_WARNINGS)
+			BIND_BITFIELD_FLAG(MESSAGE_AST)
+			BIND_BITFIELD_FLAG(MESSAGE_SPV_RULES)
+			BIND_BITFIELD_FLAG(MESSAGE_VULKAN_RULES)
+			BIND_BITFIELD_FLAG(MESSAGE_ONLY_PREPROCESSOR)
+			BIND_BITFIELD_FLAG(MESSAGE_READ_HLSL)
+			BIND_BITFIELD_FLAG(MESSAGE_CASCADING_ERRORS)
+			BIND_BITFIELD_FLAG(MESSAGE_KEEP_UNCALLED)
+			BIND_BITFIELD_FLAG(MESSAGE_HLSL_OFFSETS)
+			BIND_BITFIELD_FLAG(MESSAGE_DEBUG_INFO)
+			BIND_BITFIELD_FLAG(MESSAGE_HLSL_ENABLE16_BIT_TYPES)
+			BIND_BITFIELD_FLAG(MESSAGE_HLSL_LEGALIZATION)
+			BIND_BITFIELD_FLAG(MESSAGE_HLSL_DX9_COMPATIBLE)
+			BIND_BITFIELD_FLAG(MESSAGE_BUILTIN_SYMBOL_TABLE)
+			BIND_BITFIELD_FLAG(MESSAGE_ENHANCED)
+			BIND_BITFIELD_FLAG(MESSAGE_ABSOLUTE_PATH)
+			BIND_BITFIELD_FLAG(MESSAGE_DISPLAY_ERROR_COLUMN)
+			BIND_BITFIELD_FLAG(MESSAGE_LINK_TIME_OPTIMIZATION)
+			BIND_BITFIELD_FLAG(MESSAGE_VALIDATE_CROSS_STAGE_IO)
+			BIND_BITFIELD_FLAG(MESSAGE_RELAX_SET_BINDING_LIMITS)
 		#pragma endregion
 
 		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("initialize_process"), &gGlobalScope::initialize_process);
@@ -99,41 +100,41 @@ namespace gdglslang {
 		godot::ClassDB::bind_static_method(get_class_static(), godot::D_METHOD("glslang_to_spv_1", "p_intermediate", "p_options"), &gGlobalScope::glslang_to_spv_1);
 	}
 
-	EShLanguage gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShLanguage p_value) {
+	EShLanguage gGlobalScope::convert_to_glslang_enum(gGlobalScope::Language p_value) {
 		return EShLanguage(p_value);
 	}
 
-	glslang::EShSource gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShSource p_value) {
+	glslang::EShSource gGlobalScope::convert_to_glslang_enum(gGlobalScope::Source p_value) {
 		return glslang::EShSource(p_value);
 	}
 
-	glslang::EShClient gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShClient p_value) {
+	glslang::EShClient gGlobalScope::convert_to_glslang_enum(gGlobalScope::Client p_value) {
 		return glslang::EShClient(p_value);
 	}
 
-	glslang::EShTargetLanguage gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShTargetLanguage p_value) {
+	glslang::EShTargetLanguage gGlobalScope::convert_to_glslang_enum(gGlobalScope::TargetLanguage p_value) {
 		return glslang::EShTargetLanguage(p_value);
 	}
 
-	glslang::EShTargetClientVersion gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShTargetClientVersion p_value) {
+	glslang::EShTargetClientVersion gGlobalScope::convert_to_glslang_enum(gGlobalScope::TargetClientVersion p_value) {
 		return glslang::EShTargetClientVersion(p_value);
 	}
 
-	glslang::EShTargetLanguageVersion gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShTargetLanguageVersion p_value) {
+	glslang::EShTargetLanguageVersion gGlobalScope::convert_to_glslang_enum(gGlobalScope::TargetLanguageVersion p_value) {
 		return glslang::EShTargetLanguageVersion(p_value);
 	}
 
-	EProfile gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEProfile p_value) {
+	EProfile gGlobalScope::convert_to_glslang_enum(gGlobalScope::Profile p_value) {
 		return EProfile(p_value);
 	}
 
-	EShMessages gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShMessages p_value) {
+	EShMessages gGlobalScope::convert_to_glslang_enum(gGlobalScope::Messages p_value) {
 		return EShMessages(p_value);
 	}
 
 
-	gGlobalScope::gEShLanguage gGlobalScope::convert_to_gdglslang_enum(EShLanguage p_value) {
-		return gGlobalScope::gEShLanguage(p_value);
+	gGlobalScope::Language gGlobalScope::convert_to_gdglslang_enum(EShLanguage p_value) {
+		return gGlobalScope::Language(p_value);
 	}
 
 

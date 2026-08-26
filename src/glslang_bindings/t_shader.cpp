@@ -60,13 +60,13 @@ namespace gdglslang {
 		delete data;
 	}
 
-	godot::Ref<gTShader> gTShader::create_new(gGlobalScope::gEShLanguage p_language) {
+	godot::Ref<gTShader> gTShader::create_new(gGlobalScope::Language p_language) {
 		godot::Ref<gTShader> ret = memnew(gTShader);
 		ret->setup(p_language);
 		return ret;
 	}
 
-	void gTShader::setup(gGlobalScope::gEShLanguage p_language) {
+	void gTShader::setup(gGlobalScope::Language p_language) {
 		delete data;
 		data = new glslang::TShader(gGlobalScope::convert_to_glslang_enum(p_language));
 	}
@@ -102,41 +102,41 @@ namespace gdglslang {
 		data->setPreamble(preamble.ptr());
 	}
 
-	void gTShader::set_env_input(gGlobalScope::gEShSource p_lang, gGlobalScope::gEShLanguage p_env_stage, gGlobalScope::gEShClient p_client, int p_version) {
+	void gTShader::set_env_input(gGlobalScope::Source p_lang, gGlobalScope::Language p_env_stage, gGlobalScope::Client p_client, int p_version) {
 		ERR_FAIL_COND_MSG(!is_setup(), "GlslangTShader::setup(...) must be called before this function.");
 		data->setEnvInput(gGlobalScope::convert_to_glslang_enum(p_lang), gGlobalScope::convert_to_glslang_enum(p_env_stage), gGlobalScope::convert_to_glslang_enum(p_client), p_version);
 	}
 
-	void gTShader::set_env_client(gGlobalScope::gEShClient p_client, gGlobalScope::gEShTargetClientVersion p_version) {
+	void gTShader::set_env_client(gGlobalScope::Client p_client, gGlobalScope::TargetClientVersion p_version) {
 		ERR_FAIL_COND_MSG(!is_setup(), "GlslangTShader::setup(...) must be called before this function.");
 		data->setEnvClient(gGlobalScope::convert_to_glslang_enum(p_client), gGlobalScope::convert_to_glslang_enum(p_version));
 	}
 
-	void gTShader::set_env_target(gGlobalScope::gEShTargetLanguage p_lang, gGlobalScope::gEShTargetLanguageVersion p_version) {
+	void gTShader::set_env_target(gGlobalScope::TargetLanguage p_lang, gGlobalScope::TargetLanguageVersion p_version) {
 		ERR_FAIL_COND_MSG(!is_setup(), "GlslangTShader::setup(...) must be called before this function.");
 		data->setEnvTarget(gGlobalScope::convert_to_glslang_enum(p_lang), gGlobalScope::convert_to_glslang_enum(p_version));
 	}
 
-	bool gTShader::parse(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, gGlobalScope::gEProfile p_default_profile, bool p_force_default_version_and_profile, bool p_forward_compatible, godot::BitField<gGlobalScope::gEShMessages> p_messages, godot::Ref<gIncluder> p_includer) {
+	bool gTShader::parse(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, gGlobalScope::Profile p_default_profile, bool p_force_default_version_and_profile, bool p_forward_compatible, godot::BitField<gGlobalScope::Messages> p_messages, godot::Ref<gIncluder> p_includer) {
 		ERR_FAIL_COND_V_MSG(!is_setup(), false, "GlslangTShader::setup(...) must be called before this function.");
-		return data->parse(&p_built_in_resource->data, p_default_version, gGlobalScope::convert_to_glslang_enum(p_default_profile), p_force_default_version_and_profile, p_forward_compatible, gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShMessages(int64_t(p_messages))), *p_includer->impl);
+		return data->parse(&p_built_in_resource->data, p_default_version, gGlobalScope::convert_to_glslang_enum(p_default_profile), p_force_default_version_and_profile, p_forward_compatible, gGlobalScope::convert_to_glslang_enum(gGlobalScope::Messages(int64_t(p_messages))), *p_includer->impl);
 	}
 
 	// forbid includer
-	bool gTShader::parse_1(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, gGlobalScope::gEProfile p_default_profile, bool p_force_default_version_and_profile, bool p_forward_compatible, godot::BitField<gGlobalScope::gEShMessages> p_messages) {
+	bool gTShader::parse_1(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, gGlobalScope::Profile p_default_profile, bool p_force_default_version_and_profile, bool p_forward_compatible, godot::BitField<gGlobalScope::Messages> p_messages) {
 		ERR_FAIL_COND_V_MSG(!is_setup(), false, "GlslangTShader::setup(...) must be called before this function.");
-		return data->parse(&p_built_in_resource->data, p_default_version, gGlobalScope::convert_to_glslang_enum(p_default_profile), p_force_default_version_and_profile, p_forward_compatible, gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShMessages(int64_t(p_messages))));
+		return data->parse(&p_built_in_resource->data, p_default_version, gGlobalScope::convert_to_glslang_enum(p_default_profile), p_force_default_version_and_profile, p_forward_compatible, gGlobalScope::convert_to_glslang_enum(gGlobalScope::Messages(int64_t(p_messages))));
 	}
 
 	// forbid includer
-	bool gTShader::parse_2(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, bool p_forward_compatible, godot::BitField<gGlobalScope::gEShMessages> p_messages) {
+	bool gTShader::parse_2(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, bool p_forward_compatible, godot::BitField<gGlobalScope::Messages> p_messages) {
 		ERR_FAIL_COND_V_MSG(!is_setup(), false, "GlslangTShader::setup(...) must be called before this function.");
-		return data->parse(&p_built_in_resource->data, p_default_version, p_forward_compatible, gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShMessages(int64_t(p_messages))));
+		return data->parse(&p_built_in_resource->data, p_default_version, p_forward_compatible, gGlobalScope::convert_to_glslang_enum(gGlobalScope::Messages(int64_t(p_messages))));
 	}
 
-	bool gTShader::parse_3(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, bool p_forward_compatible, godot::BitField<gGlobalScope::gEShMessages> p_messages, godot::Ref<gIncluder> p_includer) {
+	bool gTShader::parse_3(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, bool p_forward_compatible, godot::BitField<gGlobalScope::Messages> p_messages, godot::Ref<gIncluder> p_includer) {
 		ERR_FAIL_COND_V_MSG(!is_setup(), false, "GlslangTShader::setup(...) must be called before this function.");
-		return data->parse(&p_built_in_resource->data, p_default_version, p_forward_compatible, gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShMessages(int64_t(p_messages))), *p_includer->impl);
+		return data->parse(&p_built_in_resource->data, p_default_version, p_forward_compatible, gGlobalScope::convert_to_glslang_enum(gGlobalScope::Messages(int64_t(p_messages))), *p_includer->impl);
 	}
 
 	godot::String gTShader::get_info_log() {
@@ -149,8 +149,8 @@ namespace gdglslang {
 		return godot::String(data->getInfoDebugLog());
 	}
 
-	gGlobalScope::gEShLanguage gTShader::get_stage() const {
-		ERR_FAIL_COND_V_MSG(!is_setup(), gGlobalScope::gEShLanguage::EShLangVertex, "GlslangTShader::setup(...) must be called before this function.");
+	gGlobalScope::Language gTShader::get_stage() const {
+		ERR_FAIL_COND_V_MSG(!is_setup(), gGlobalScope::Language::LANGUAGE_MAX, "GlslangTShader::setup(...) must be called before this function.");
 		return gGlobalScope::convert_to_gdglslang_enum(data->getStage());
 	}
 

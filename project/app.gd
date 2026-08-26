@@ -11,17 +11,17 @@ func _ready() -> void:
 func compile(p_source_file_path: String) -> PackedByteArray:
 	GlslangGlobalScope.initialize_process()
 
-	var shader: GlslangTShader = GlslangTShader.create_new(GlslangGlobalScope.gEShLanguage.EShLangCompute)
+	var shader: GlslangTShader = GlslangTShader.create_new(GlslangGlobalScope.Language.LANGUAGE_COMPUTE)
 	shader.set_strings([FileAccess.open(p_source_file_path, FileAccess.READ).get_as_text()])
 
-	shader.set_env_input(GlslangGlobalScope.EShSourceGlsl, GlslangGlobalScope.EShLangCompute, GlslangGlobalScope.EShClientVulkan, 100)
-	shader.set_env_client(GlslangGlobalScope.EShClientVulkan, GlslangGlobalScope.EShTargetVulkan_1_4)
-	shader.set_env_target(GlslangGlobalScope.EShTargetSpv, GlslangGlobalScope.EShTargetSpv_1_6)
+	shader.set_env_input(GlslangGlobalScope.SOURCE_GLSL, GlslangGlobalScope.LANGUAGE_COMPUTE, GlslangGlobalScope.CLIENT_VULKAN, 100)
+	shader.set_env_client(GlslangGlobalScope.CLIENT_VULKAN, GlslangGlobalScope.TARGET_CLIENT_VERSION_VULKAN_1_4)
+	shader.set_env_target(GlslangGlobalScope.TARGET_LANGUAGE_SPV, GlslangGlobalScope.TARGET_LANGUAGE_VERSION_SPV_1_6)
 
 	var includer: StandardIncluder = StandardIncluder.new()
 	includer.add_search_dirs([p_source_file_path.get_base_dir()])
 
-	var messages: int = GlslangGlobalScope.EShMsgDefault | GlslangGlobalScope.EShMsgSpvRules | GlslangGlobalScope.EShMsgVulkanRules | GlslangGlobalScope.EShMsgDebugInfo
+	var messages: int = GlslangGlobalScope.MESSAGE_DEFAULT | GlslangGlobalScope.MESSAGE_SPV_RULES | GlslangGlobalScope.MESSAGE_VULKAN_RULES | GlslangGlobalScope.MESSAGE_DEBUG_INFO
 	var success: bool = shader.parse_3(GlslangGlobalScope.get_default_resources(), 460, true, messages, includer)
 
 	if not success:

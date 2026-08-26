@@ -25,12 +25,12 @@ namespace gdglslang {
 
 			void add_shader(godot::Ref<gTShader> p_shader);
 
-			bool link(godot::BitField<gGlobalScope::gEShMessages> p_messages);
+			bool link(godot::BitField<gGlobalScope::Messages> p_messages);
 
 			godot::String get_info_log();
 			godot::String get_info_debug_log();
 
-			godot::Ref<gTIntermediate> get_intermediate(gGlobalScope::gEShLanguage p_stage) const;
+			godot::Ref<gTIntermediate> get_intermediate(gGlobalScope::Language p_stage) const;
 		#pragma endregion
 	};
 }
