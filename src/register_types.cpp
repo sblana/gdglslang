@@ -13,7 +13,7 @@
 #include "glslang_bindings/t_shader.hpp"
 #include "glslang_bindings/t_program.hpp"
 #include "glslang_bindings/includer/include_result.hpp"
-#include "glslang_bindings/includer/includer_interface.hpp"
+#include "glslang_bindings/includer/includer.hpp"
 
 
 void initialize_gdglslang(godot::ModuleInitializationLevel p_level) {
@@ -27,7 +27,7 @@ void initialize_gdglslang(godot::ModuleInitializationLevel p_level) {
 		GDREGISTER_CLASS(gdglslang::gTShader);
 		GDREGISTER_CLASS(gdglslang::gTProgram);
 		GDREGISTER_CLASS(gdglslang::gIncludeResult);
-		GDREGISTER_CLASS(gdglslang::gIncluderInterface);
+		GDREGISTER_VIRTUAL_CLASS(gdglslang::gIncluder);
 	}
 }
 

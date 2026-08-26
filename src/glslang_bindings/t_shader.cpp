@@ -117,7 +117,7 @@ namespace gdglslang {
 		data->setEnvTarget(gGlobalScope::convert_to_glslang_enum(p_lang), gGlobalScope::convert_to_glslang_enum(p_version));
 	}
 
-	bool gTShader::parse(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, gGlobalScope::gEProfile p_default_profile, bool p_force_default_version_and_profile, bool p_forward_compatible, godot::BitField<gGlobalScope::gEShMessages> p_messages, godot::Ref<gIncluderInterface> p_includer) {
+	bool gTShader::parse(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, gGlobalScope::gEProfile p_default_profile, bool p_force_default_version_and_profile, bool p_forward_compatible, godot::BitField<gGlobalScope::gEShMessages> p_messages, godot::Ref<gIncluder> p_includer) {
 		ERR_FAIL_COND_V_MSG(!is_setup(), false, "GlslangTShader::setup(...) must be called before this function.");
 		return data->parse(&p_built_in_resource->data, p_default_version, gGlobalScope::convert_to_glslang_enum(p_default_profile), p_force_default_version_and_profile, p_forward_compatible, gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShMessages(int64_t(p_messages))), *p_includer->impl);
 	}
@@ -134,7 +134,7 @@ namespace gdglslang {
 		return data->parse(&p_built_in_resource->data, p_default_version, p_forward_compatible, gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShMessages(int64_t(p_messages))));
 	}
 
-	bool gTShader::parse_3(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, bool p_forward_compatible, godot::BitField<gGlobalScope::gEShMessages> p_messages, godot::Ref<gIncluderInterface> p_includer) {
+	bool gTShader::parse_3(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, bool p_forward_compatible, godot::BitField<gGlobalScope::gEShMessages> p_messages, godot::Ref<gIncluder> p_includer) {
 		ERR_FAIL_COND_V_MSG(!is_setup(), false, "GlslangTShader::setup(...) must be called before this function.");
 		return data->parse(&p_built_in_resource->data, p_default_version, p_forward_compatible, gGlobalScope::convert_to_glslang_enum(gGlobalScope::gEShMessages(int64_t(p_messages))), *p_includer->impl);
 	}

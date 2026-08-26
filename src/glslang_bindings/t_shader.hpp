@@ -1,7 +1,7 @@
 #pragma once
 #include <godot_cpp/classes/ref_counted.hpp>
 #include "global_scope.hpp"
-#include "includer/includer_interface.hpp"
+#include "includer/includer.hpp"
 #include "t_intermediate.hpp"
 
 namespace gdglslang {
@@ -50,12 +50,12 @@ namespace gdglslang {
 			void set_env_client(gGlobalScope::gEShClient p_client, gGlobalScope::gEShTargetClientVersion p_version);
 			void set_env_target(gGlobalScope::gEShTargetLanguage p_lang, gGlobalScope::gEShTargetLanguageVersion p_version);
 
-			bool parse(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, gGlobalScope::gEProfile p_default_profile, bool p_force_default_version_and_profile, bool p_forward_compatible, godot::BitField<gGlobalScope::gEShMessages> p_messages, godot::Ref<gIncluderInterface> p_includer);
+			bool parse(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, gGlobalScope::gEProfile p_default_profile, bool p_force_default_version_and_profile, bool p_forward_compatible, godot::BitField<gGlobalScope::gEShMessages> p_messages, godot::Ref<gIncluder> p_includer);
 			// forbid includer
 			bool parse_1(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, gGlobalScope::gEProfile p_default_profile, bool p_force_default_version_and_profile, bool p_forward_compatible, godot::BitField<gGlobalScope::gEShMessages> p_messages);
 			// forbid includer
 			bool parse_2(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, bool p_forward_compatible, godot::BitField<gGlobalScope::gEShMessages> p_messages);
-			bool parse_3(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, bool p_forward_compatible, godot::BitField<gGlobalScope::gEShMessages> p_messages, godot::Ref<gIncluderInterface> p_includer);
+			bool parse_3(godot::Ref<gTBuiltInResource> p_built_in_resource, int p_default_version, bool p_forward_compatible, godot::BitField<gGlobalScope::gEShMessages> p_messages, godot::Ref<gIncluder> p_includer);
 
 			godot::String get_info_log();
 			godot::String get_info_debug_log();

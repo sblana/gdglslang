@@ -9,14 +9,14 @@ namespace gdglslang {
 				return false;
 			}
 			godot::Object *obj = owner->get_ref();
-			godot::Ref<gIncluderInterface> ref = godot::Object::cast_to<gIncluderInterface>(obj);
+			godot::Ref<gIncluder> ref = godot::Object::cast_to<gIncluder>(obj);
 			return ref.is_valid();
 		}
 
-		godot::Ref<gIncluderInterface> gIncluderImpl::get_owner() const {
+		godot::Ref<gIncluder> gIncluderImpl::get_owner() const {
 			if (has_owner()) {
 				godot::Object *obj = owner->get_ref();
-				return godot::Object::cast_to<gIncluderInterface>(obj);
+				return godot::Object::cast_to<gIncluder>(obj);
 			}
 			// error or something
 			return nullptr;
@@ -47,7 +47,7 @@ namespace gdglslang {
 			return;
 		}
 
-		gIncluderImpl::gIncluderImpl(godot::Ref<gIncluderInterface> p_owner) {
+		gIncluderImpl::gIncluderImpl(godot::Ref<gIncluder> p_owner) {
 			owner = godot::UtilityFunctions::weakref(p_owner);
 		}
 

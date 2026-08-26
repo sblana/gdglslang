@@ -22,7 +22,7 @@ func compile(p_source_file_path: String) -> PackedByteArray:
 	includer.add_search_dirs([p_source_file_path.get_base_dir()])
 
 	var messages: int = GlslangGlobalScope.EShMsgDefault | GlslangGlobalScope.EShMsgSpvRules | GlslangGlobalScope.EShMsgVulkanRules | GlslangGlobalScope.EShMsgDebugInfo
-	var success: bool = shader.parse_3(GlslangGlobalScope.get_default_resources(), 460, true, messages, includer.create_new_includer_interface())
+	var success: bool = shader.parse_3(GlslangGlobalScope.get_default_resources(), 460, true, messages, includer)
 
 	if not success:
 		print("shader.parse() failed")
